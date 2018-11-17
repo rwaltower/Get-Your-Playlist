@@ -51,4 +51,4 @@
 
 Since we're all working at the same time, we don't want to write over each other's code.
 
-**Never push to master branch**
+**Never commit/push to master branch**
