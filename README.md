@@ -36,7 +36,7 @@
 	git checkout <yourbranchname>
 	```
 
-3. Do your code work	
+3. Do your work	
 	- Be sure to commit to your local branch with brief descriptions when you finish sections.
 
 4. When you get to a good stopping point that you're ready for everyone else to look at it and test, commit to your local branch then push it to our remote repository.
@@ -50,4 +50,5 @@
 6. Once your branch has been tested and approved, we'll merge it into the master branch.
 
 Since we're all working at the same time, we don't want to write over each other's code.
+
 **Never push to master branch**
