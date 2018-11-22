@@ -3,27 +3,37 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		939A7D7A069D211134A314CC /* Pods_Get_Your_Playlist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E37C3CCCE33CD10D9A344CC2 /* Pods_Get_Your_Playlist.framework */; };
 		C5274BB321A058E800EFEC05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BB221A058E800EFEC05 /* AppDelegate.swift */; };
-		C5274BB521A058E800EFEC05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BB421A058E800EFEC05 /* ViewController.swift */; };
 		C5274BB821A058E800EFEC05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5274BB621A058E800EFEC05 /* Main.storyboard */; };
 		C5274BBB21A058E900EFEC05 /* Get_Your_Playlist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C5274BB921A058E900EFEC05 /* Get_Your_Playlist.xcdatamodeld */; };
 		C5274BBD21A0591A00EFEC05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5274BBC21A0591A00EFEC05 /* Assets.xcassets */; };
 		C5274BC021A0591A00EFEC05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5274BBE21A0591A00EFEC05 /* LaunchScreen.storyboard */; };
+		C5274BCA21A4E25200EFEC05 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BC921A4E25200EFEC05 /* RegisterViewController.swift */; };
+		C5274BCC21A4E99700EFEC05 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BCB21A4E99600EFEC05 /* LoginViewController.swift */; };
+		C5274BD021A4EAD400EFEC05 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BCF21A4EAD400EFEC05 /* HomeViewController.swift */; };
+		C5274BD221A618B200EFEC05 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BD121A618B100EFEC05 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1530BE1ED932B6A719E58BE7 /* Pods-Get Your Playlist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Get Your Playlist.release.xcconfig"; path = "Pods/Target Support Files/Pods-Get Your Playlist/Pods-Get Your Playlist.release.xcconfig"; sourceTree = "<group>"; };
+		ACBA9464E7518A33F50542B5 /* Pods-Get Your Playlist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Get Your Playlist.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Get Your Playlist/Pods-Get Your Playlist.debug.xcconfig"; sourceTree = "<group>"; };
 		C5274BAF21A058E700EFEC05 /* Get Your Playlist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Get Your Playlist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5274BB221A058E800EFEC05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C5274BB421A058E800EFEC05 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C5274BB721A058E800EFEC05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C5274BBA21A058E900EFEC05 /* Get_Your_Playlist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Get_Your_Playlist.xcdatamodel; sourceTree = "<group>"; };
 		C5274BBC21A0591A00EFEC05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5274BBF21A0591A00EFEC05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C5274BC121A0591A00EFEC05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5274BC921A4E25200EFEC05 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		C5274BCB21A4E99600EFEC05 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C5274BCF21A4EAD400EFEC05 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C5274BD121A618B100EFEC05 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E37C3CCCE33CD10D9A344CC2 /* Pods_Get_Your_Playlist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Get_Your_Playlist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +41,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				939A7D7A069D211134A314CC /* Pods_Get_Your_Playlist.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16207AD760EFD4CB8A3D875B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ACBA9464E7518A33F50542B5 /* Pods-Get Your Playlist.debug.xcconfig */,
+				1530BE1ED932B6A719E58BE7 /* Pods-Get Your Playlist.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6535AE6E1DE104B512B2E3F0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E37C3CCCE33CD10D9A344CC2 /* Pods_Get_Your_Playlist.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C5274BA621A058E700EFEC05 = {
 			isa = PBXGroup;
 			children = (
 				C5274BB121A058E700EFEC05 /* Get Your Playlist */,
 				C5274BB021A058E700EFEC05 /* Products */,
+				16207AD760EFD4CB8A3D875B /* Pods */,
+				6535AE6E1DE104B512B2E3F0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,7 +87,10 @@
 			isa = PBXGroup;
 			children = (
 				C5274BB221A058E800EFEC05 /* AppDelegate.swift */,
-				C5274BB421A058E800EFEC05 /* ViewController.swift */,
+				C5274BC921A4E25200EFEC05 /* RegisterViewController.swift */,
+				C5274BCB21A4E99600EFEC05 /* LoginViewController.swift */,
+				C5274BD121A618B100EFEC05 /* Extensions.swift */,
+				C5274BCF21A4EAD400EFEC05 /* HomeViewController.swift */,
 				C5274BB621A058E800EFEC05 /* Main.storyboard */,
 				C5274BBC21A0591A00EFEC05 /* Assets.xcassets */,
 				C5274BBE21A0591A00EFEC05 /* LaunchScreen.storyboard */,
@@ -74,9 +107,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C5274BC421A0591A00EFEC05 /* Build configuration list for PBXNativeTarget "Get Your Playlist" */;
 			buildPhases = (
+				4FB6F4F8BDDAAEB708EB8F6D /* [CP] Check Pods Manifest.lock */,
 				C5274BAB21A058E700EFEC05 /* Sources */,
 				C5274BAC21A058E700EFEC05 /* Frameworks */,
 				C5274BAD21A058E700EFEC05 /* Resources */,
+				DA6C77A87DAAC0BD72F7F4BA /* [CP] Embed Pods Frameworks */,
+				29AE1C35150BF5F65DB7EA4A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -99,11 +135,12 @@
 				TargetAttributes = {
 					C5274BAE21A058E700EFEC05 = {
 						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = C5274BAA21A058E700EFEC05 /* Build configuration list for PBXProject "Get Your Playlist" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -133,14 +170,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		29AE1C35150BF5F65DB7EA4A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Get Your Playlist/Pods-Get Your Playlist-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4FB6F4F8BDDAAEB708EB8F6D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DA6C77A87DAAC0BD72F7F4BA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Get Your Playlist/Pods-Get Your Playlist-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C5274BAB21A058E700EFEC05 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5274BB521A058E800EFEC05 /* ViewController.swift in Sources */,
+				C5274BD021A4EAD400EFEC05 /* HomeViewController.swift in Sources */,
+				C5274BD221A618B200EFEC05 /* Extensions.swift in Sources */,
 				C5274BB321A058E800EFEC05 /* AppDelegate.swift in Sources */,
 				C5274BBB21A058E900EFEC05 /* Get_Your_Playlist.xcdatamodeld in Sources */,
+				C5274BCC21A4E99700EFEC05 /* LoginViewController.swift in Sources */,
+				C5274BCA21A4E25200EFEC05 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,22 +364,20 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		C5274BC521A0591A00EFEC05 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACBA9464E7518A33F50542B5 /* Pods-Get Your Playlist.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D5H964E5T6;
 				INFOPLIST_FILE = "Get Your Playlist/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Get-Your-Playlist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -301,14 +387,13 @@
 		};
 		C5274BC621A0591A00EFEC05 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1530BE1ED932B6A719E58BE7 /* Pods-Get Your Playlist.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D5H964E5T6;
 				INFOPLIST_FILE = "Get Your Playlist/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Get-Your-Playlist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
