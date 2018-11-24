@@ -14,15 +14,21 @@ import Parse
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var authorizationManager: AuthorizationManager!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
         let configuration = ParseClientConfiguration {
             $0.applicationId = "5fRhE1Ui7Lt8cgCMs1TeOY9SERYK1Kl9hzMCmO7e"
             $0.clientKey = "nN2k39WwaG0fCdA9BytH9AD7tS3lIGbfG0TBGjrX"
             $0.server = "https://parseapi.back4app.com"
         }
+        
+        authorizationManager.requestCloudServiceAuthorization()
+        
+        authorizationManager.requestMediaLibraryAuthorization()
         
         Parse.initialize(with: configuration)
         saveInstallationObject()
@@ -31,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if (user != nil) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+            let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
             self.window?.rootViewController = vc
             self.window?.makeKeyAndVisible()
         } else {

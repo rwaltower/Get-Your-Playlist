@@ -53,15 +53,15 @@ class RegisterViewController: UIViewController {
         user.username = txtUsername.text
         user.password = txtPassword.text
         user.email = txtEmail.text
-        user["firstname"] = txtFirstName.text
-        user["lastname"] = txtLastName.text
+        user["first_name"] = txtFirstName.text
+        user["last_name"] = txtLastName.text
         
         let sv = UIViewController.displaySpinner(onView: self.view)
         user.signUpInBackground { (success, error) in
             UIViewController.removeSpinner(spinner: sv)
             if success{
-                let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-                self.present(homeViewController, animated: true, completion: nil)
+                let personalizationViewController = self.storyboard?.instantiateViewController(withIdentifier: "PersonalizationViewController") as! PersonalizationViewController
+                self.present(personalizationViewController, animated: true, completion: nil)
             } else {
                 if let descrip = error?.localizedDescription{
                     self.displayErrorMessage(message: descrip)

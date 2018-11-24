@@ -17,6 +17,21 @@
 		C5274BCC21A4E99700EFEC05 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BCB21A4E99600EFEC05 /* LoginViewController.swift */; };
 		C5274BD021A4EAD400EFEC05 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BCF21A4EAD400EFEC05 /* HomeViewController.swift */; };
 		C5274BD221A618B200EFEC05 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BD121A618B100EFEC05 /* Extensions.swift */; };
+		C5274BDB21A8428E00EFEC05 /* AuthorizationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BD521A8428D00EFEC05 /* AuthorizationDataSource.swift */; };
+		C5274BDC21A8428F00EFEC05 /* MediaLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BD621A8428E00EFEC05 /* MediaLibraryManager.swift */; };
+		C5274BDD21A8428F00EFEC05 /* MusicPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BD721A8428E00EFEC05 /* MusicPlayerManager.swift */; };
+		C5274BDE21A8428F00EFEC05 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BD821A8428E00EFEC05 /* AuthorizationManager.swift */; };
+		C5274BDF21A8428F00EFEC05 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BD921A8428E00EFEC05 /* ImageCacheManager.swift */; };
+		C5274BE021A8428F00EFEC05 /* AppleMusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BDA21A8428E00EFEC05 /* AppleMusicManager.swift */; };
+		C5274BF421A8463100EFEC05 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BF021A8460300EFEC05 /* Artwork.swift */; };
+		C5274BF521A8463100EFEC05 /* MediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BF121A8460300EFEC05 /* MediaItem.swift */; };
+		C5274BF621A8463100EFEC05 /* SerializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BF221A8460300EFEC05 /* SerializationError.swift */; };
+		C5274BF921A84F1100EFEC05 /* JSONKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BF721A84F0A00EFEC05 /* JSONKeys.swift */; };
+		C5274BFA21A84F1100EFEC05 /* AppleMusicRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BF821A84F0F00EFEC05 /* AppleMusicRequestFactory.swift */; };
+		C5274BFC21A8979200EFEC05 /* PersonalizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BFB21A8979200EFEC05 /* PersonalizationViewController.swift */; };
+		C5274BFE21A89EC300EFEC05 /* PageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BFD21A89EC200EFEC05 /* PageContentViewController.swift */; };
+		C5274C0021A8BF4E00EFEC05 /* PlaylistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BFF21A8BF4E00EFEC05 /* PlaylistManager.swift */; };
+		C5274C0221A8DEA400EFEC05 /* PersonalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274C0121A8DEA400EFEC05 /* PersonalizationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +48,21 @@
 		C5274BCB21A4E99600EFEC05 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C5274BCF21A4EAD400EFEC05 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C5274BD121A618B100EFEC05 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C5274BD521A8428D00EFEC05 /* AuthorizationDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationDataSource.swift; sourceTree = "<group>"; };
+		C5274BD621A8428E00EFEC05 /* MediaLibraryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaLibraryManager.swift; sourceTree = "<group>"; };
+		C5274BD721A8428E00EFEC05 /* MusicPlayerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerManager.swift; sourceTree = "<group>"; };
+		C5274BD821A8428E00EFEC05 /* AuthorizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationManager.swift; sourceTree = "<group>"; };
+		C5274BD921A8428E00EFEC05 /* ImageCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		C5274BDA21A8428E00EFEC05 /* AppleMusicManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleMusicManager.swift; sourceTree = "<group>"; };
+		C5274BF021A8460300EFEC05 /* Artwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
+		C5274BF121A8460300EFEC05 /* MediaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItem.swift; sourceTree = "<group>"; };
+		C5274BF221A8460300EFEC05 /* SerializationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializationError.swift; sourceTree = "<group>"; };
+		C5274BF721A84F0A00EFEC05 /* JSONKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONKeys.swift; sourceTree = "<group>"; };
+		C5274BF821A84F0F00EFEC05 /* AppleMusicRequestFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleMusicRequestFactory.swift; sourceTree = "<group>"; };
+		C5274BFB21A8979200EFEC05 /* PersonalizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizationViewController.swift; sourceTree = "<group>"; };
+		C5274BFD21A89EC200EFEC05 /* PageContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageContentViewController.swift; sourceTree = "<group>"; };
+		C5274BFF21A8BF4E00EFEC05 /* PlaylistManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistManager.swift; sourceTree = "<group>"; };
+		C5274C0121A8DEA400EFEC05 /* PersonalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizationManager.swift; sourceTree = "<group>"; };
 		E37C3CCCE33CD10D9A344CC2 /* Pods_Get_Your_Playlist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Get_Your_Playlist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -86,11 +116,13 @@
 		C5274BB121A058E700EFEC05 /* Get Your Playlist */ = {
 			isa = PBXGroup;
 			children = (
+				C5274C0321A902EA00EFEC05 /* Utilities */,
+				C5274BEF21A8460300EFEC05 /* Model */,
+				C5274BF321A8462F00EFEC05 /* Utility */,
 				C5274BB221A058E800EFEC05 /* AppDelegate.swift */,
-				C5274BC921A4E25200EFEC05 /* RegisterViewController.swift */,
-				C5274BCB21A4E99600EFEC05 /* LoginViewController.swift */,
+				C5274BD321A62E6100EFEC05 /* View Controllers */,
 				C5274BD121A618B100EFEC05 /* Extensions.swift */,
-				C5274BCF21A4EAD400EFEC05 /* HomeViewController.swift */,
+				C5274BD421A8403000EFEC05 /* Managers */,
 				C5274BB621A058E800EFEC05 /* Main.storyboard */,
 				C5274BBC21A0591A00EFEC05 /* Assets.xcassets */,
 				C5274BBE21A0591A00EFEC05 /* LaunchScreen.storyboard */,
@@ -98,6 +130,59 @@
 				C5274BB921A058E900EFEC05 /* Get_Your_Playlist.xcdatamodeld */,
 			);
 			path = "Get Your Playlist";
+			sourceTree = "<group>";
+		};
+		C5274BD321A62E6100EFEC05 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C5274BC921A4E25200EFEC05 /* RegisterViewController.swift */,
+				C5274BCB21A4E99600EFEC05 /* LoginViewController.swift */,
+				C5274BCF21A4EAD400EFEC05 /* HomeViewController.swift */,
+				C5274BFB21A8979200EFEC05 /* PersonalizationViewController.swift */,
+				C5274BFD21A89EC200EFEC05 /* PageContentViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C5274BD421A8403000EFEC05 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C5274BDA21A8428E00EFEC05 /* AppleMusicManager.swift */,
+				C5274BD521A8428D00EFEC05 /* AuthorizationDataSource.swift */,
+				C5274BD821A8428E00EFEC05 /* AuthorizationManager.swift */,
+				C5274BD921A8428E00EFEC05 /* ImageCacheManager.swift */,
+				C5274BD621A8428E00EFEC05 /* MediaLibraryManager.swift */,
+				C5274BD721A8428E00EFEC05 /* MusicPlayerManager.swift */,
+				C5274BFF21A8BF4E00EFEC05 /* PlaylistManager.swift */,
+				C5274C0121A8DEA400EFEC05 /* PersonalizationManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		C5274BEF21A8460300EFEC05 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C5274BF021A8460300EFEC05 /* Artwork.swift */,
+				C5274BF121A8460300EFEC05 /* MediaItem.swift */,
+				C5274BF221A8460300EFEC05 /* SerializationError.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C5274BF321A8462F00EFEC05 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		C5274C0321A902EA00EFEC05 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C5274BF821A84F0F00EFEC05 /* AppleMusicRequestFactory.swift */,
+				C5274BF721A84F0A00EFEC05 /* JSONKeys.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,12 +308,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5274BF621A8463100EFEC05 /* SerializationError.swift in Sources */,
 				C5274BD021A4EAD400EFEC05 /* HomeViewController.swift in Sources */,
 				C5274BD221A618B200EFEC05 /* Extensions.swift in Sources */,
 				C5274BB321A058E800EFEC05 /* AppDelegate.swift in Sources */,
+				C5274BFA21A84F1100EFEC05 /* AppleMusicRequestFactory.swift in Sources */,
 				C5274BBB21A058E900EFEC05 /* Get_Your_Playlist.xcdatamodeld in Sources */,
+				C5274C0221A8DEA400EFEC05 /* PersonalizationManager.swift in Sources */,
+				C5274BDC21A8428F00EFEC05 /* MediaLibraryManager.swift in Sources */,
 				C5274BCC21A4E99700EFEC05 /* LoginViewController.swift in Sources */,
 				C5274BCA21A4E25200EFEC05 /* RegisterViewController.swift in Sources */,
+				C5274C0021A8BF4E00EFEC05 /* PlaylistManager.swift in Sources */,
+				C5274BF521A8463100EFEC05 /* MediaItem.swift in Sources */,
+				C5274BF421A8463100EFEC05 /* Artwork.swift in Sources */,
+				C5274BDE21A8428F00EFEC05 /* AuthorizationManager.swift in Sources */,
+				C5274BE021A8428F00EFEC05 /* AppleMusicManager.swift in Sources */,
+				C5274BDD21A8428F00EFEC05 /* MusicPlayerManager.swift in Sources */,
+				C5274BFE21A89EC300EFEC05 /* PageContentViewController.swift in Sources */,
+				C5274BDF21A8428F00EFEC05 /* ImageCacheManager.swift in Sources */,
+				C5274BDB21A8428E00EFEC05 /* AuthorizationDataSource.swift in Sources */,
+				C5274BF921A84F1100EFEC05 /* JSONKeys.swift in Sources */,
+				C5274BFC21A8979200EFEC05 /* PersonalizationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
