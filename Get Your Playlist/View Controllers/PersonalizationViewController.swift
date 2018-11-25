@@ -25,7 +25,7 @@ class PersonalizationViewController: UIPageViewController, UIPageViewControllerD
         moodsQuery.whereKeyExists("name")
         moodsQuery.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
             if let error = error {
-
+                
                 print(error.localizedDescription)
             } else if let objects = objects {
                 self.moods = objects
@@ -34,11 +34,12 @@ class PersonalizationViewController: UIPageViewController, UIPageViewControllerD
                 for object in objects {
                     self.pageTitles.append(object["name"] as! String)
                 }
+            } else {
+
             }
         }
         
         let activitiesQuery = PFQuery(className: "Activities")
-        activitiesQuery.whereKeyExists("name")
         activitiesQuery.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
             if let error = error {
 
@@ -51,7 +52,7 @@ class PersonalizationViewController: UIPageViewController, UIPageViewControllerD
                     self.pageTitles.append(object["name"] as! String)
                 }
             } else {
-                
+
             }
         }
         
@@ -101,7 +102,7 @@ class PersonalizationViewController: UIPageViewController, UIPageViewControllerD
     {
         // Create a new view controller and pass suitable data.
         let pageContentViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageContentViewController") as! PageContentViewController
-        
+
         pageContentViewController.strTitle = "When I'm \(pageTitles[index])..."
         pageContentViewController.pageIndex = index
         pageContentViewController.totalPages = pageTitles.count

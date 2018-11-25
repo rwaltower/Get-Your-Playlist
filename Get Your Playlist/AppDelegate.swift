@@ -26,14 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.server = "https://parseapi.back4app.com"
         }
         
-        authorizationManager.requestCloudServiceAuthorization()
+        //authorizationManager.requestCloudServiceAuthorization()
         
-        authorizationManager.requestMediaLibraryAuthorization()
+        //authorizationManager.requestMediaLibraryAuthorization()
         
         Parse.initialize(with: configuration)
         saveInstallationObject()
         
-        let user = PFUser.current()
+        /*let user = PFUser.current()
         
         if (user != nil) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
             self.window?.rootViewController = vc
             self.window?.makeKeyAndVisible()
-        }
+        }*/
         
         return true
     }

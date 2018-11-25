@@ -11,6 +11,8 @@ import Parse
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var btnCreatePlaylist: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

@@ -11,14 +11,14 @@ import UIKit
 import Parse
 
 class PageContentViewController: UIViewController {
-    
-    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblTitle: UINavigationItem!
     
     @IBOutlet weak var btnNext: UIBarButtonItem!
     @IBOutlet weak var btnBack: UIBarButtonItem!
+    @IBOutlet weak var collectionChoices: UICollectionView!
     
-    @IBOutlet weak var btnGenres: UIButton!
-    @IBOutlet weak var btnArtists: UIButton!
+    @IBOutlet weak var btnChoose: UIButton!
+    
 
     var pageIndex: Int = 0
     var strTitle: String!
@@ -28,13 +28,15 @@ class PageContentViewController: UIViewController {
     var personalizationTopic: String!
     
     var personalizationViewController: PersonalizationViewController?
+    
+    var currentUser = PFUser.current()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         personalizationTopic = personalizationViewController?.pageTitles[pageIndex]
         
-        lblTitle.text = strTitle
+        lblTitle.title = strTitle
         
         if pageIndex == 0 {
             btnBack.isEnabled = false
@@ -52,6 +54,7 @@ class PageContentViewController: UIViewController {
         do {
             if try isMood(data: personalizationTopic) {
                 // TODO: Save choices to moods
+                
             }
             
             if try isActivity(data: personalizationTopic) {
@@ -111,6 +114,10 @@ class PageContentViewController: UIViewController {
         }
         
         return isActivity
+    }
+    
+    @IBAction func chooseButtonPressed(_ sender: UIButton) {
+        // TODO: Initlize search view controller
     }
     
 }
