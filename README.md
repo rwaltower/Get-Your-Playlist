@@ -55,3 +55,10 @@ We're using Apple MusicKit for our app. Take a look at this example <https://dev
 Since we're all working at the same time, we don't want to write over each other's code.
 
 **Never commit/push to master branch**
+
+## Extra info
+### How to make apple music api requests in Terminal
+```
+curl -v -H 'Authorization: Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjM2NjdVMkJXTlUifQ.eyJpc3MiOiJENUg5NjRFNVQ2IiwiaWF0IjoxNTQzMDc2Mzk3LCJleHAiOjE1NDU2NjgzOTd9.qN6wYdCpdCqyviHPvV_nUsXC6xt4n8NfzFvOtlMA9QU2l7WjvgfgBs4JFQj2uxtAi8RJL1qviIF7dc5L1MazbA' "https://api.music.apple.com/v1/catalog/us/QUERY-GOES-HERE"
+```
+Replace QUERY-GOES-HERE with whatevere you're trying to fetch  based on this documentaion: <https://developer.apple.com/documentation/applemusicapi>
