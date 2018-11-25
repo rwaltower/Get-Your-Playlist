@@ -51,34 +51,25 @@ class PageContentViewController: UIViewController {
     }
     
     @IBAction func nextButtonPressed(_ sender: UIBarButtonItem) {
-        do {
-            if try isMood(data: personalizationTopic) {
-                // TODO: Save choices to moods
-                
-            }
-            
-            if try isActivity(data: personalizationTopic) {
-                // TODO: Save choices to activities
-            }
-        } catch {
-            print("Error determining if mood or activity.")
-        }
-        
+       
+        print("pressed next")
         
         
         if pageIndex == (totalPages - 1) {
-            
+            print("last page")
             let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
             self.present(homeViewController, animated: true, completion: nil)
             
         } else {
-            personalizationViewController?.setViewControllers([personalizationViewController?.getViewControllerAtIndex(index: pageIndex - 1)] as? [UIViewController], direction: UIPageViewController.NavigationDirection.forward, animated: false, completion: nil)
+            print("next page")
+            personalizationViewController?.setViewControllers([personalizationViewController?.getViewControllerAtIndex(index: pageIndex + 1)] as? [UIViewController], direction: UIPageViewController.NavigationDirection.forward, animated: false, completion: nil)
         }
         
     }
     
     @IBAction func backButtonPressed(_ sender: UIBarButtonItem) {
-        personalizationViewController?.setViewControllers([personalizationViewController?.getViewControllerAtIndex(index: pageIndex - 1)] as? [UIViewController], direction: UIPageViewController.NavigationDirection.reverse, animated: false, completion: nil)
+        print("pressed back")
+ personalizationViewController?.setViewControllers([personalizationViewController?.getViewControllerAtIndex(index: pageIndex - 1)] as? [UIViewController], direction: UIPageViewController.NavigationDirection.reverse, animated: false, completion: nil)
     }
     
     func isMood(data: String) throws -> Bool {
@@ -118,6 +109,11 @@ class PageContentViewController: UIViewController {
     
     @IBAction func chooseButtonPressed(_ sender: UIButton) {
         // TODO: Initlize search view controller
+        
+        let searchViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        searchViewController.searchTitle = strTitle
+        
+        self.present(searchViewController, animated: true)
     }
     
 }

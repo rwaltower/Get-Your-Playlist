@@ -23,7 +23,6 @@ class DataManager: NSObject {
     
     func getSongSearchResults(searchTerm: String, completion: @escaping ([Song]?) -> Void) {
         dataTask?.cancel()
-        print("get search results")
         guard let  escapedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
             completion(nil)
             return
@@ -80,7 +79,6 @@ class DataManager: NSObject {
     
     func getGenreSearchResults(searchTerm: String, completion: @escaping ([Genre]?) -> Void) {
         dataTask?.cancel()
-        print("get search results")
         guard let  escapedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
             completion(nil)
             return
@@ -97,47 +95,49 @@ class DataManager: NSObject {
             }
             
             self.token = (configData?["developer_token"] as? String)!
+            
+            if let urlComponents = URLComponents(string: "https://api.music.apple.com/v1/catalog/us/genres") {
+                
+                guard let url = urlComponents.url else {
+                    completion(nil)
+                    return
+                }
+                
+                var request = URLRequest(url: url)
+                request.addValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
+
+                self.dataTask = self.defaultSession.dataTask(with: request) {(data, response, error ) in
+                    guard error == nil else {
+                        print("Error")
+                        completion(nil)
+                        return
+                    }
+                    
+                    guard let content = data else {
+                        print("No data")
+                        completion(nil)
+                        return
+                    }
+                    
+                    let jsonDecoder = JSONDecoder()
+                    guard var genres = (try? jsonDecoder.decode(GenreResults.self, from: content))?.genres else {
+                        print("Decoding error")
+                        completion(nil)
+                        return
+                    }
+                    do {
+                        genres = try self.filterGenreResults(searchText: escapedSearchTerm, genres: genres)
+                    } catch {
+                        print("cant't filter genres")
+                    }
+                    
+                    completion(genres)
+                }
+                self.dataTask?.resume()
+            }
         }
         
-        if let urlComponents = URLComponents(string: "https://api.music.apple.com/v1/catalog/us/genres") {
-            
-            guard let url = urlComponents.url else {
-                completion(nil)
-                return
-            }
-            
-            var request = URLRequest(url: url)
-            request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-            print("Request: \(request)")
-            dataTask = defaultSession.dataTask(with: request) {(data, response, error ) in
-                guard error == nil else {
-                    print("Error")
-                    completion(nil)
-                    return
-                }
-                
-                guard let content = data else {
-                    print("No data")
-                    completion(nil)
-                    return
-                }
-                
-                let jsonDecoder = JSONDecoder()
-                guard var genres = (try? jsonDecoder.decode(GenreResults.self, from: content))?.genres else {
-                    print("Decoding error")
-                    completion(nil)
-                    return
-                }
-                do {
-                   genres = try self.filterGenreResults(searchText: escapedSearchTerm, genres: genres)
-                } catch {
-                    print("cant't filter genres")
-                }
-                
-                completion(genres)
-            }
-            dataTask?.resume()
-        }
+        
     }
     
     func filterGenreResults(searchText: String, genres: [Genre]) throws -> [Genre] {
@@ -172,40 +172,42 @@ class DataManager: NSObject {
             }
             
             self.token = (configData?["developer_token"] as? String)!
-        }
-        
-        if var urlComponents = URLComponents(string: "https://api.music.apple.com/v1/catalog/us/search") {
-            urlComponents.query = "term=\(escapedSearchTerm)&types=artists&limit=25"
             
-            guard let url = urlComponents.url else {
-                completion(nil)
-                return
-            }
-            
-            var request = URLRequest(url: url)
-            request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-            
-            dataTask = defaultSession.dataTask(with: request) {(data, response, error ) in
-                guard error == nil else {
-                    print("Error")
+            if var urlComponents = URLComponents(string: "https://api.music.apple.com/v1/catalog/us/search") {
+                urlComponents.query = "term=\(escapedSearchTerm)&types=artists&limit=25"
+                
+                guard let url = urlComponents.url else {
                     completion(nil)
                     return
                 }
                 
-                guard let content = data else {
-                    print("No data")
-                    completion(nil)
-                    return
+                var request = URLRequest(url: url)
+                request.addValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
+                
+                self.dataTask = self.defaultSession.dataTask(with: request) {(data, response, error ) in
+                    guard error == nil else {
+                        print("Error")
+                        completion(nil)
+                        return
+                    }
+                    
+                    guard let content = data else {
+                        print("No data")
+                        completion(nil)
+                        return
+                    }
+                    let jsonDecoder = JSONDecoder()
+                    guard let artists = (try? jsonDecoder.decode(ArtistResults.self, from: content))?.artists else {
+                        print("Decoding error")
+                        completion(nil)
+                        return
+                    }
+                    completion(artists)
                 }
-                let jsonDecoder = JSONDecoder()
-                guard let artists = (try? jsonDecoder.decode(ArtistResults.self, from: content))?.artists else {
-                    print("Decoding error")
-                    completion(nil)
-                    return
-                }
-                completion(artists)
+                self.dataTask?.resume()
             }
-            dataTask?.resume()
         }
-    }
+        }
+        
+        
 }

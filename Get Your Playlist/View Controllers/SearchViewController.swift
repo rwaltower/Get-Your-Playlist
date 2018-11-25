@@ -15,15 +15,27 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    @IBOutlet weak var switchSearch: UISegmentedControl!
+    @IBOutlet weak var lblTitle: UINavigationItem!
+    
+    @IBOutlet weak var btnDone: UIBarButtonItem!
+    @IBOutlet weak var btnCancel: UIBarButtonItem!
     
     var songs: [Song] = []
     var artists: [Artist] = []
     var genres: [Genre] = []
     
+    var choices: [[String]] = []
+    var artistChoices: [String] = []
+    var genreChoices: [String] = []
+    
+    var searchTitle: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        choices.append(artistChoices)
+        choices.append(genreChoices)
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,7 +52,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch switchSearch.selectedSegmentIndex
+        switch searchBar.selectedScopeButtonIndex
         {
         case 0:
             return artists.count
@@ -57,7 +69,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "Cell")
         
-        switch switchSearch.selectedSegmentIndex
+        switch searchBar.selectedScopeButtonIndex
         {
         case 0:
             let artist = artists[indexPath.row]
@@ -73,16 +85,61 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        guard let searchTerm = searchBar.text else {
-            return
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        let cellItem = cell!.textLabel?.text
+        
+        switch searchBar.selectedScopeButtonIndex
+        {
+        case 0:
+            choices[0].append(cellItem ?? "")
+            
+        case 1:
+            choices[1].append(cellItem ?? "")
+            
+        default:
+            break
         }
-        self.songs = []
+        
+        print(choices)
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        let cellItem = cell!.textLabel?.text
+        
+        switch searchBar.selectedScopeButtonIndex
+        {
+        case 0:
+            choices[0] = choices[0].filter{$0 != cellItem }
+            
+        case 1:
+            choices[1] = choices[1].filter{$0 != cellItem }
+
+        default:
+            break
+        }
+        
+        print(choices)
+
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let searchTerm = searchText
+        self.artists = []
         self.genres = []
+        
         self.tableView.reloadData()
         activityIndicator?.startAnimating()
         
-        switch switchSearch.selectedSegmentIndex
+        switch searchBar.selectedScopeButtonIndex
         {
         case 0:
             DataManager.sharedInstance.getArtistSearchResults(searchTerm: searchTerm, completion: {(data) in
@@ -116,6 +173,16 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
         
+    }
+    
+    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+
+    }
+    
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+
     }
 }
 

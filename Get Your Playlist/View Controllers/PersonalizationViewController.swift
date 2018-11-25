@@ -12,54 +12,22 @@ import Parse
 
 class PersonalizationViewController: UIPageViewController, UIPageViewControllerDataSource {
     
-    var pageTitles = [] as [String]
-    let currentUser = PFUser.current() as PFUser?
+    var pageTitles: [String] = []
+    //let currentUser: PFUser = PFUser.current()!
 
-    var moods = [] as [PFObject]
-    var activities = [] as [PFObject]
+    var moods: [PFObject] = []
+    var activities: [PFObject] = []
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let moodsQuery = PFQuery(className: "Moods")
-        moodsQuery.whereKeyExists("name")
-        moodsQuery.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
-            if let error = error {
-                
-                print(error.localizedDescription)
-            } else if let objects = objects {
-                self.moods = objects
-                print("Successfully retrieved moods.")
-
-                for object in objects {
-                    self.pageTitles.append(object["name"] as! String)
-                }
-            } else {
-
-            }
-        }
-        
-        let activitiesQuery = PFQuery(className: "Activities")
-        activitiesQuery.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
-            if let error = error {
-
-                print(error.localizedDescription)
-            } else if let objects = objects {
-                self.activities = objects
-                print("Successfully retrieved activities.")
-
-                for object in objects {
-                    self.pageTitles.append(object["name"] as! String)
-                }
-            } else {
-
-            }
-        }
-        
-        self.dataSource = self
-        
-        self.setViewControllers([getViewControllerAtIndex(index: 0)] as [UIViewController], direction: UIPageViewController.NavigationDirection.forward, animated: false, completion: nil)
-
+        PersonaliaztionManager.personalizationManager.getPersonalizationPageTitles(completion: {(titles) in
+            self.pageTitles = titles!
+            self.dataSource = self
+            
+            self.setViewControllers([self.getViewControllerAtIndex(index: 0)] as [UIViewController], direction: UIPageViewController.NavigationDirection.forward, animated: false, completion: nil)
+        })
+    
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore
