@@ -13,6 +13,9 @@ class PersonaliaztionManager: NSObject {
     
     static let personalizationManager = PersonaliaztionManager()
     
+    var moodObjects: [PFObject] = []
+    var activityObjects: [PFObject] = []
+    
     func getPersonalizationPageTitles(completion: @escaping (_ titles: [String]?)->()) {
         var titles: [String] = []
         let moodsQuery = PFQuery(className: "Moods")
@@ -22,7 +25,7 @@ class PersonaliaztionManager: NSObject {
                 
                 print(error.localizedDescription)
             } else if let objects = objects {
-                
+                self.moodObjects = objects
                 print("Successfully retrieved moods.")
                 
                 for object in objects {
@@ -36,7 +39,7 @@ class PersonaliaztionManager: NSObject {
                     
                     print(error.localizedDescription)
                 } else if let objects = objects {
-                    
+                    self.activityObjects = objects
                     print("Successfully retrieved activities.")
                     
                     for object in objects {

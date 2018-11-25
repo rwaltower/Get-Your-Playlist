@@ -155,7 +155,6 @@ class DataManager: NSObject {
     
     func getArtistSearchResults(searchTerm: String, completion: @escaping ([Artist]?) -> Void) {
         dataTask?.cancel()
-        print("get search results")
         guard let  escapedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
             completion(nil)
             return

@@ -11,91 +11,81 @@ import Parse
 
 class PlaylistManager: NSObject {
     
+    let currentUser = PFUser.current()
+    
+    var dataManager: DataManager!
+    
     func createPlaylist(playlistData: Array<Any>) {
-        let playlistMood = playlistData[0]
-        let playlistActivity = playlistData[1]
-        let playlistDuration = playlistData[2]
-        do {
-            let moodData = try retrieveMoodData(myMood: playlistMood as! String)
-            
-        } catch {
-            print("Error retrieving mood data")
-        }
-        
-        do {
-            let activityData = try retrieveActivityData(myActivity: playlistActivity as! String)
-        } catch {
-            print("Error retrieving activity data")
-        }
+        var songs: [String] = []
         
         
         
     }
     
-    func retrieveMoodData(myMood: String) throws -> Array<Any> {
-        var moodArray: Array<Any> = []
-            
+    func retrieveMoodData(myMood: String, completion: @escaping (_ moodArray: [[String]]? ) -> ()) {
+        var moodArray: [[String]] = []
+        let artistArray: [String] = []
+        let genreArray: [String] = []
+
+        moodArray.append(artistArray)
+        moodArray.append(genreArray)
         let query = PFQuery(className: "Moods")
         query.whereKey("name", equalTo:myMood)
-        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+        query.getFirstObjectInBackground{ (object: PFObject?, error: Error?) in
             if let error = error {
                 // Log details of the failure
                 print(error.localizedDescription)
-            } else if let objects = objects {
-                print("Successfully retrieved mood.")
-                // Do something with the found objects
-                for object in objects {
-                    moodArray.append(contentsOf: [object["genres"], object["artists"]])
+            } else if object != nil {
+                let query = PFQuery(className: "user_has_moods")
+                query.whereKey("user_id", equalTo: self.currentUser!)
+                query.whereKey("mood_id", equalTo: object!)
+                query.getFirstObjectInBackground { (object: PFObject?, error: Error?) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    } else if object != nil {
+                        moodArray[0] = object!["artists"] as! [String]
+                        moodArray[1] = object!["genres"] as! [String]
+                    }
+                    
+                    completion(moodArray)
                 }
+            
             }
         }
         
-        return moodArray
     }
     
-    func retrieveActivityData(myActivity: String) throws -> Array<Any> {
-        var activityArray: Array<Any> = []
+    func retrieveActivityData(myActivity: String, completion: @escaping (_ activityArray: [[String]]? ) -> ()) {
+        var activityArray: [[String]] = []
+        let artistArray: [String] = []
+        let genreArray: [String] = []
         
+        activityArray.append(artistArray)
+        activityArray.append(genreArray)
         let query = PFQuery(className: "Activities")
         query.whereKey("name", equalTo:myActivity)
-        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+        query.getFirstObjectInBackground{ (object: PFObject?, error: Error?) in
             if let error = error {
                 // Log details of the failure
                 print(error.localizedDescription)
-            } else if let objects = objects {
-                print("Successfully retrieved mood.")
-                // Do something with the found objects
-                for object in objects {
-                    activityArray.append(contentsOf: [object["genres"], object["artists"]])
-                }
-            }
-        }
-        
-        return activityArray
-    }
-    
-    func retrieveSongs(artistData: Array<Any>, genreData: Array<Any>) throws -> Array<Any> {
-        var songData: Array<Any> = []
-        var artistIds: Array<Any> = []
-        var genreIds: Array<Any> = []
-        let artistQuery = PFQuery(className: "Artists")
-
-        for artist in artistData {
-            artistQuery.whereKey("name", equalTo: artist)
-            artistQuery.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
-                if let error = error {
-                    // Log details of the failure
-                    print(error.localizedDescription)
-                } else if let objects = objects {
-                    print("Successfully retrieved artist.")
-                    // Do something with the found objects
-                    for object in objects {
-                        
+            } else if object != nil {
+                let query = PFQuery(className: "user_has_activities")
+                query.whereKey("user_id", equalTo: self.currentUser!)
+                query.whereKey("activity_id", equalTo: object!)
+                query.getFirstObjectInBackground { (object: PFObject?, error: Error?) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    } else if object != nil {
+                        activityArray[0] = object!["artists"] as! [String]
+                        activityArray[1] = object!["genres"] as! [String]
                     }
+                    
+                    completion(activityArray)
                 }
                 
             }
         }
-        return songData
+        
     }
+ 
 }

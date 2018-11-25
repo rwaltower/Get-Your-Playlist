@@ -12,10 +12,36 @@ import Parse
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var btnCreatePlaylist: UIButton!
+    @IBOutlet weak var playlistsTable: UITableView!
+    
+    var userPlaylists: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let currentUser = PFUser.current()
+        
+        let query = PFQuery(className: "user_has_playlists")
+        query.whereKey("user_id", equalTo: currentUser!)
+        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if let error = error {
+                
+                print(error.localizedDescription)
+            } else if let objects = objects {
+                
+                print("Successfully retrieved user playlists.")
+                
+                for object in objects {
+                    self.userPlaylists.append(object["name"] as! String)
+                }
+            }
+            
+            self.playlistsTable.reloadData()
+        }
+        
+        
+
     }
     
     override func didReceiveMemoryWarning() {

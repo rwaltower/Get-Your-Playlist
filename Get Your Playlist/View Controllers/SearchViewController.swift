@@ -11,11 +11,14 @@ import UIKit
 
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
+    var pageContentViewController: PageContentViewController!
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var lblTitle: UINavigationItem!
+    @IBOutlet weak var choicesTable: UITableView!
     
     @IBOutlet weak var btnDone: UIBarButtonItem!
     @IBOutlet weak var btnCancel: UIBarButtonItem!
@@ -25,17 +28,15 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     var genres: [Genre] = []
     
     var choices: [[String]] = []
-    var artistChoices: [String] = []
-    var genreChoices: [String] = []
+    var artistNames: [String] = []
+    var genreNames: [String] = []
     
     var searchTitle: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        choices.append(artistChoices)
-        choices.append(genreChoices)
+        lblTitle.title = searchTitle
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,10 +46,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.01
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,16 +94,25 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         switch searchBar.selectedScopeButtonIndex
         {
         case 0:
-            choices[0].append(cellItem ?? "")
-            
+            if artistNames.count == 3 {
+                tableView.deselectRow(at: indexPath, animated: true)
+                self.displayErrorMessage(message: "You can only choose 3 artists.")
+            } else {
+                artistNames.append(cellItem ?? "")
+            }
         case 1:
-            choices[1].append(cellItem ?? "")
+            if genreNames.count == 3 {
+                tableView.deselectRow(at: indexPath, animated: true)
+                self.displayErrorMessage(message: "You can only choose 3 genres.")
+
+            } else {
+                genreNames.append(cellItem ?? "")
+
+            }
             
         default:
             break
         }
-        
-        print(choices)
         
     }
     
@@ -118,17 +124,14 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         switch searchBar.selectedScopeButtonIndex
         {
         case 0:
-            choices[0] = choices[0].filter{$0 != cellItem }
+            artistNames = artistNames.filter{$0 != cellItem }
             
         case 1:
-            choices[1] = choices[1].filter{$0 != cellItem }
+            genreNames = genreNames.filter{$0 != cellItem }
 
         default:
             break
         }
-        
-        print(choices)
-
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -176,6 +179,16 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
+        
+        self.choices.append(artistNames)
+        self.choices.append(genreNames)
+        
+        self.pageContentViewController.artistData = artistNames
+        self.pageContentViewController.genreData = genreNames
+        
+        self.pageContentViewController.allData = self.pageContentViewController.artistData + self.pageContentViewController.genreData
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshTable"), object: nil)
         self.dismiss(animated: true, completion: nil)
 
     }
@@ -183,6 +196,18 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
 
+    }
+    
+    func displayErrorMessage(message:String) {
+        let alertView = UIAlertController(title: "Error!", message: message, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+        }
+        alertView.addAction(OKAction)
+        if let presenter = alertView.popoverPresentationController {
+            presenter.sourceView = self.view
+            presenter.sourceRect = self.view.bounds
+        }
+        self.present(alertView, animated: true, completion:nil)
     }
 }
 
