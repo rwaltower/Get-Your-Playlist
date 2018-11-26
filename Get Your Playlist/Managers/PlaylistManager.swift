@@ -15,9 +15,11 @@ class PlaylistManager: NSObject {
     
     var dataManager: DataManager!
     
-    func createPlaylist(playlistData: Array<Any>) {
-        var songs: [String] = []
-        
+    let appleMusicManager = AppleMusicManager()
+    
+    var mediaItems = [MediaItem]()
+    
+    func createPlaylist(data: [String], duration: Int) {
         
         
     }

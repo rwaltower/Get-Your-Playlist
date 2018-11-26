@@ -34,7 +34,7 @@ struct AppleMusicRequestFactory {
         
         let expectedTerms = term.replacingOccurrences(of: " ", with: "+")
         let urlParameters = ["term": expectedTerms,
-                             "limit": "1",
+                             "limit": "25",
                              "types": "songs"]
         
         var queryItems = [URLQueryItem]()

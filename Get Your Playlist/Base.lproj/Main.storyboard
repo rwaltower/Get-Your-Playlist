@@ -208,12 +208,78 @@
                     <view key="view" contentMode="scaleToFill" id="J6a-Om-MSR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter playlist name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Hz-Ih-U8N">
+                                <rect key="frame" x="139" y="117" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How are you feeling?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GZj-Qd-8Nz">
+                                <rect key="frame" x="139" y="289" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="chooseMood:" destination="sPc-nx-38B" eventType="touchUpInside" id="nl7-vT-Hem"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What are you doing?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pXN-bT-bML">
+                                <rect key="frame" x="139" y="219" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="chooseActivity:" destination="sPc-nx-38B" eventType="touchUpInside" id="Fqb-Zq-ZHk"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How long?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WYg-Sh-xbl">
+                                <rect key="frame" x="139" y="397" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="chooseDuration:" destination="sPc-nx-38B" eventType="touchUpInside" id="ZAu-nR-v62"/>
+                                </connections>
+                            </textField>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kQ1-07-C2W">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Create Playlist" id="YLC-A2-6Ib">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="QVz-O4-6Kr">
+                                            <connections>
+                                                <action selector="cancelCreatePlaylist:" destination="sPc-nx-38B" id="tG5-Hz-S0g"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Create" id="gup-lx-1PH">
+                                            <connections>
+                                                <action selector="createPlaylist:" destination="sPc-nx-38B" id="f9w-PB-YMT"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="nfK-2J-JLN"/>
                     </view>
+                    <connections>
+                        <outlet property="btnCancel" destination="QVz-O4-6Kr" id="XuS-r8-vz4"/>
+                        <outlet property="btnCreate" destination="gup-lx-1PH" id="JPI-AH-dX8"/>
+                        <outlet property="txtActivity" destination="pXN-bT-bML" id="f3h-tJ-AfH"/>
+                        <outlet property="txtDuration" destination="WYg-Sh-xbl" id="DMt-yD-r9S"/>
+                        <outlet property="txtMood" destination="GZj-Qd-8Nz" id="hR1-im-T2j"/>
+                        <outlet property="txtPlaylistName" destination="2Hz-Ih-U8N" id="Zha-PJ-lh0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yHd-eQ-HOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1374" y="581"/>
         </scene>
     </scenes>
 </document>
