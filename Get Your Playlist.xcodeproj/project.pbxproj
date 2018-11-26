@@ -45,6 +45,10 @@
 		1530BE1ED932B6A719E58BE7 /* Pods-Get Your Playlist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Get Your Playlist.release.xcconfig"; path = "Pods/Target Support Files/Pods-Get Your Playlist/Pods-Get Your Playlist.release.xcconfig"; sourceTree = "<group>"; };
 		67C85E2121AC626C008B4E91 /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		67C85E2B21AC91F5008B4E91 /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
+		67C85E2D21ACB213008B4E91 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		67C85E2E21ACB214008B4E91 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		67C85E2F21ACB23E008B4E91 /* Montserrat 500.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat 500.ttf"; sourceTree = "<group>"; };
+		67C85E3021ACB24F008B4E91 /* Montserrat 700.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat 700.ttf"; sourceTree = "<group>"; };
 		ACBA9464E7518A33F50542B5 /* Pods-Get Your Playlist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Get Your Playlist.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Get Your Playlist/Pods-Get Your Playlist.debug.xcconfig"; sourceTree = "<group>"; };
 		C5274BAF21A058E700EFEC05 /* Get Your Playlist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Get Your Playlist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5274BB221A058E800EFEC05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -192,6 +196,10 @@
 		C5274C0321A902EA00EFEC05 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				67C85E2F21ACB23E008B4E91 /* Montserrat 500.ttf */,
+				67C85E3021ACB24F008B4E91 /* Montserrat 700.ttf */,
+				67C85E2E21ACB214008B4E91 /* OpenSans-Bold.ttf */,
+				67C85E2D21ACB213008B4E91 /* OpenSans-Regular.ttf */,
 				C5274BF821A84F0F00EFEC05 /* AppleMusicRequestFactory.swift */,
 				C5274BF721A84F0A00EFEC05 /* JSONKeys.swift */,
 			);
