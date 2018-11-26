@@ -15,7 +15,7 @@ class AppleMusicManager {
     // MARK: Types
 
     /// The completion handler that is called when an Apple Music Catalog Search API call completes.
-    typealias CatalogSearchCompletionHandler = (_ mediaItems: [[MediaItem]], _ error: Error?) -> Void
+    typealias CatalogSearchCompletionHandler = (_ mediaItems: [MediaItem], _ error: Error?) -> Void
     
     /// The completion handler that is called when an Apple Music Get User Storefront API call completes.
     typealias GetUserStorefrontCompletionHandler = (_ storefront: String?, _ error: Error?) -> Void
@@ -59,30 +59,39 @@ class AppleMusicManager {
     
     // MARK: General Apple Music API Methods
     
-    func performAppleMusicCatalogSearch(with term: String, countryCode: String, completion: @escaping CatalogSearchCompletionHandler) {
+    func performAppleMusicCatalogSearch(with term: String, completion: @escaping CatalogSearchCompletionHandler) {
         
-        guard let developerToken = fetchDeveloperToken() else {
-            fatalError("Developer Token not configured. See README for more details.")
-        }
-
-        let urlRequest = AppleMusicRequestFactory.createSearchRequest(with: term, countryCode: countryCode, developerToken: developerToken)
-        
-        let task = urlSession.dataTask(with: urlRequest) { (data, response, error) in
-            guard error == nil, let urlResponse = response as? HTTPURLResponse, urlResponse.statusCode == 200 else {
-                completion([], error)
-                return
+        PFConfig.getInBackground {
+            ( config: PFConfig?, error: Error?) -> Void in
+            var configData = config
+            if error == nil {
+                print("Yay! Config was fetched from the server.")
+            } else {
+                print("Failed to fetch. Using Cached Config.")
+                configData = PFConfig.current()
+            }
+            let developerToken = configData!["developer_token"]
+            let urlRequest = AppleMusicRequestFactory.createSearchRequest(with: term, developerToken: developerToken as! String)
+            print("request: \(urlRequest)")
+            let task = self.urlSession.dataTask(with: urlRequest) { (data, response, error) in
+                guard error == nil, let urlResponse = response as? HTTPURLResponse, urlResponse.statusCode == 200 else {
+                    completion([], error)
+                    return
+                }
+                
+                do {
+                    let mediaItems = try self.processMediaItemSections(from: data!)
+                    completion(mediaItems, nil)
+                    
+                } catch {
+                    fatalError("An error occurred: \(error.localizedDescription)")
+                }
             }
             
-            do {
-                let mediaItems = try self.processMediaItemSections(from: data!)
-                completion(mediaItems, nil)
-                
-            } catch {
-                fatalError("An error occurred: \(error.localizedDescription)")
-            }
+            task.resume()
         }
+
         
-        task.resume()
     }
     
     func performAppleMusicStorefrontsLookup(regionCode: String, completion: @escaping GetUserStorefrontCompletionHandler) {
@@ -172,30 +181,22 @@ class AppleMusicManager {
         task.resume()
     }
     
-    func processMediaItemSections(from json: Data) throws -> [[MediaItem]] {
+    func processMediaItemSections(from json: Data) throws -> [MediaItem] {
         guard let jsonDictionary = try JSONSerialization.jsonObject(with: json, options: []) as? [String: Any],
             let results = jsonDictionary[ResponseRootJSONKeys.results] as? [String: [String: Any]] else {
                 throw SerializationError.missing(ResponseRootJSONKeys.results)
         }
         
-        var mediaItems = [[MediaItem]]()
+        var mediaItems = [MediaItem]()
         
         if let songsDictionary = results[ResourceTypeJSONKeys.songs] {
             
             if let dataArray = songsDictionary[ResponseRootJSONKeys.data] as? [[String: Any]] {
                 let songMediaItems = try processMediaItems(from: dataArray)
-                mediaItems.append(songMediaItems)
+                mediaItems = songMediaItems
             }
         }
-        
-        if let albumsDictionary = results[ResourceTypeJSONKeys.albums] {
-            
-            if let dataArray = albumsDictionary[ResponseRootJSONKeys.data] as? [[String: Any]] {
-                let albumMediaItems = try processMediaItems(from: dataArray)
-                mediaItems.append(albumMediaItems)
-            }
-        }
-        
+
         return mediaItems
     }
     

@@ -36,7 +36,6 @@ struct Song: Decodable {
     enum SongKeys: String, CodingKey {
         case name
         case artistName
-        case artwork
     }
     
     enum AttributesKeys: String, CodingKey {

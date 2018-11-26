@@ -39,41 +39,41 @@ class DataManager: NSObject {
             }
             
             self.token = (configData?["developer_token"] as? String)!
-        }
-        
-        if var urlComponents = URLComponents(string: "https://api.music.apple.com/v1/catalog/us/search") {
-            urlComponents.query = "term=\(escapedSearchTerm)&types=songs&limit=25"
             
-            guard let url = urlComponents.url else {
-                completion(nil)
-                return
-            }
-            
-            var request = URLRequest(url: url)
-            request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-            
-            dataTask = defaultSession.dataTask(with: request) {(data, response, error ) in
-                guard error == nil else {
-                    print("Error")
+            if var urlComponents = URLComponents(string: "https://api.music.apple.com/v1/catalog/us/search") {
+                urlComponents.query = "term=\(escapedSearchTerm)&types=songs&limit=1"
+                
+                guard let url = urlComponents.url else {
                     completion(nil)
                     return
                 }
                 
-                guard let content = data else {
-                    print("No data")
-                    completion(nil)
-                    return
-                }
+                var request = URLRequest(url: url)
+                request.addValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
                 
-                let jsonDecoder = JSONDecoder()
-                guard let songs = (try? jsonDecoder.decode(Results.self, from: content))?.songs else {
-                    print("Decoding error")
-                    completion(nil)
-                    return
+                self.dataTask = self.defaultSession.dataTask(with: request) {(data, response, error ) in
+                    guard error == nil else {
+                        print("Error")
+                        completion(nil)
+                        return
+                    }
+                    
+                    guard let content = data else {
+                        print("No data")
+                        completion(nil)
+                        return
+                    }
+                    print("Results: \(content)")
+                    let jsonDecoder = JSONDecoder()
+                    guard let songs = (try? jsonDecoder.decode(Results.self, from: content))?.songs else {
+                        print("Decoding error")
+                        completion(nil)
+                        return
+                    }
+                    completion(songs)
                 }
-                completion(songs)
+                self.dataTask?.resume()
             }
-            dataTask?.resume()
         }
     }
     
@@ -136,8 +136,6 @@ class DataManager: NSObject {
                 self.dataTask?.resume()
             }
         }
-        
-        
     }
     
     func filterGenreResults(searchText: String, genres: [Genre]) throws -> [Genre] {
@@ -206,7 +204,7 @@ class DataManager: NSObject {
                 self.dataTask?.resume()
             }
         }
-        }
+    }
         
         
 }

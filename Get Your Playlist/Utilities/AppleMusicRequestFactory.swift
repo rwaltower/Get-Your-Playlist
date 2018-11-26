@@ -24,18 +24,18 @@ struct AppleMusicRequestFactory {
     
     static let genresPathURLString = "/v1/me/library/genres"
         
-    static func createSearchRequest(with term: String, countryCode: String, developerToken: String) -> URLRequest {
+    static func createSearchRequest(with term: String, developerToken: String) -> URLRequest {
         
         // Create the URL components for the network call.
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = AppleMusicRequestFactory.appleMusicAPIBaseURLString
-        urlComponents.path = "/v1/catalog/\(countryCode)/search"
+        urlComponents.path = "/v1/catalog/us/search"
         
         let expectedTerms = term.replacingOccurrences(of: " ", with: "+")
         let urlParameters = ["term": expectedTerms,
-                             "limit": "10",
-                             "types": "songs,albums"]
+                             "limit": "1",
+                             "types": "songs"]
         
         var queryItems = [URLQueryItem]()
         for (key, value) in urlParameters {

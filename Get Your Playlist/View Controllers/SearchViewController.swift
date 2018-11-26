@@ -23,7 +23,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var btnDone: UIBarButtonItem!
     @IBOutlet weak var btnCancel: UIBarButtonItem!
     
-    var songs: [Song] = []
     var artists: [Artist] = []
     var genres: [Genre] = []
     

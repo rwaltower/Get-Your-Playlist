@@ -17,11 +17,15 @@ class PersonalizationViewController: UIPageViewController, UIPageViewControllerD
 
     var moods: [PFObject] = []
     var activities: [PFObject] = []
-        
+    
+    let appleMusicManager = AppleMusicManager()
+    
+    var mediaItems: [[MediaItem]] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        PersonaliaztionManager.personalizationManager.getPersonalizationPageTitles(completion: {(titles) in
+         PersonaliaztionManager.personalizationManager.getPersonalizationPageTitles(completion: {(titles) in
             self.pageTitles = titles!
             self.dataSource = self
             

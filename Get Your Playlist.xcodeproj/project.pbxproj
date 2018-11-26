@@ -37,6 +37,7 @@
 		C5274C0921A9E78700EFEC05 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274C0821A9E78700EFEC05 /* Song.swift */; };
 		C5274C0B21AA02E300EFEC05 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274C0A21AA02E300EFEC05 /* Artist.swift */; };
 		C5274C0D21AA0B7B00EFEC05 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274C0C21AA0B7B00EFEC05 /* Genre.swift */; };
+		C5C1CD0B21AB7D2400E9E76B /* CreatePlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1CD0A21AB7D2400E9E76B /* CreatePlaylistViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		C5274C0821A9E78700EFEC05 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		C5274C0A21AA02E300EFEC05 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		C5274C0C21AA0B7B00EFEC05 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		C5C1CD0A21AB7D2400E9E76B /* CreatePlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlaylistViewController.swift; sourceTree = "<group>"; };
 		E37C3CCCE33CD10D9A344CC2 /* Pods_Get_Your_Playlist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Get_Your_Playlist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -150,6 +152,7 @@
 				C5274BFB21A8979200EFEC05 /* PersonalizationViewController.swift */,
 				C5274BFD21A89EC200EFEC05 /* PageContentViewController.swift */,
 				C5274C0421A9E69F00EFEC05 /* SearchViewController.swift */,
+				C5C1CD0A21AB7D2400E9E76B /* CreatePlaylistViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				C5274C0721A9E73700EFEC05 /* DataManager.swift in Sources */,
 				C5274BBB21A058E900EFEC05 /* Get_Your_Playlist.xcdatamodeld in Sources */,
 				C5274C0221A8DEA400EFEC05 /* PersonalizationManager.swift in Sources */,
+				C5C1CD0B21AB7D2400E9E76B /* CreatePlaylistViewController.swift in Sources */,
 				C5274BDC21A8428F00EFEC05 /* MediaLibraryManager.swift in Sources */,
 				C5274C0D21AA0B7B00EFEC05 /* Genre.swift in Sources */,
 				C5274BCC21A4E99700EFEC05 /* LoginViewController.swift in Sources */,

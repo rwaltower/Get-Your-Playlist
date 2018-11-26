@@ -27,11 +27,15 @@ class MediaItem {
         
         static let attributes = "attributes"
         
+        static let playParams = "playParams"
+        
         static let name = "name"
         
         static let artistName = "artistName"
         
         static let artwork = "artwork"
+        
+        static let durationInMillis = "durationInMillis"
     }
     
     // MARK: Properties
@@ -50,6 +54,8 @@ class MediaItem {
     
     /// The type of the `MediaItem` which in this application can be either `songs` or `albums`.
     let type: MediaType
+    
+    let duration: Int
     
     // MARK: Initialization
     
@@ -70,16 +76,23 @@ class MediaItem {
             throw SerializationError.missing(JSONKeys.name)
         }
         
+        guard let duration = attributes[JSONKeys.durationInMillis] as? Int else {
+            throw SerializationError.missing(JSONKeys.durationInMillis)
+        }
+        
         let artistName = attributes[JSONKeys.artistName] as? String ?? " "
         
         guard let artworkJSON = attributes[JSONKeys.artwork] as? [String: Any], let artwork = try? Artwork(json: artworkJSON) else {
             throw SerializationError.missing(JSONKeys.artwork)
         }
         
+        
+        
         self.identifier = identifier
         self.type = type
         self.name = name
         self.artistName = artistName
         self.artwork = artwork
+        self.duration = duration
     }
 }
