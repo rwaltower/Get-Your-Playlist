@@ -216,47 +216,47 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How are you feeling?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GZj-Qd-8Nz">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How are you feeling?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GZj-Qd-8Nz">
                                 <rect key="frame" x="139" y="289" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="chooseMood:" destination="sPc-nx-38B" eventType="touchUpInside" id="nl7-vT-Hem"/>
+                                    <action selector="chooseMood:" destination="sPc-nx-38B" eventType="editingDidEnd" id="u1T-VR-A6T"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What are you doing?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pXN-bT-bML">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What are you doing?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pXN-bT-bML">
                                 <rect key="frame" x="139" y="219" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="chooseActivity:" destination="sPc-nx-38B" eventType="touchUpInside" id="Fqb-Zq-ZHk"/>
+                                    <action selector="chooseActivity:" destination="sPc-nx-38B" eventType="editingDidEnd" id="52T-dq-7G2"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How long?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WYg-Sh-xbl">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How long?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WYg-Sh-xbl">
                                 <rect key="frame" x="139" y="397" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="chooseDuration:" destination="sPc-nx-38B" eventType="touchUpInside" id="ZAu-nR-v62"/>
+                                    <action selector="chooseDuration:" destination="sPc-nx-38B" eventType="editingDidEnd" id="UZx-JQ-iMD"/>
                                 </connections>
                             </textField>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kQ1-07-C2W">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Create Playlist" id="YLC-A2-6Ib">
+                                    <navigationItem title="Create Playlist" prompt="      " id="YLC-A2-6Ib">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="QVz-O4-6Kr">
                                             <connections>
                                                 <action selector="cancelCreatePlaylist:" destination="sPc-nx-38B" id="tG5-Hz-S0g"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Create" id="gup-lx-1PH">
+                                        <barButtonItem key="rightBarButtonItem" title="Create" id="gup-lx-1PH">
                                             <connections>
                                                 <action selector="createPlaylist:" destination="sPc-nx-38B" id="f9w-PB-YMT"/>
                                             </connections>

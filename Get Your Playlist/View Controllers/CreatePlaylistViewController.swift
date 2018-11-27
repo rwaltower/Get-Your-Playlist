@@ -15,25 +15,25 @@ class CreatePlaylistViewControllers: UIViewController, UIPickerViewDataSource, U
     
     let appleMusicManager = AppleMusicManager()
     
-    var moodPicker: UIPickerView! = nil
-    var activityPicker: UIPickerView! = nil
-    var durationPicker: UIPickerView! = nil
+    let playlistManager = PlaylistManager()
+    
+    let moodPicker = UIPickerView()
+    let activityPicker = UIPickerView()
+    let durationPicker = UIPickerView()
     
     var moodNames: [String] = []
     var activityNames: [String] = []
     var durationAmounts: [Int] = [15, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]
     
+    var chosenSongs: [[String]] = []
+    
     @IBOutlet weak var txtPlaylistName: UITextField!
     @IBOutlet weak var txtMood: UITextField!
     @IBOutlet weak var txtActivity: UITextField!
     @IBOutlet weak var txtDuration: UITextField!
+    
     @IBOutlet weak var btnCreate: UIBarButtonItem!
     @IBOutlet weak var btnCancel: UIBarButtonItem!
-    
-    
-    var chosenMood: String = ""
-    var chosenActivity: String = ""
-    var chosenDuration: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,21 +59,26 @@ class CreatePlaylistViewControllers: UIViewController, UIPickerViewDataSource, U
 
     }
     
-    func createPlaylist() {
+    func chooseSongs(_ songData: [[Any]], playlistDuration: Int) -> [[String]] {
+        var songs: [[String]] = []
         
-        var data: [String] = []
-        var songNames: [String] = []
-        var songDurations: [Int] = []
+        var totalDuration: Int = 0
         
-        retrieveSongs(terms: data, completion: { (songArray) in
-            for song in songArray! {
-                songNames.append(song.name)
-                songDurations.append(song.duration)
+        let playlistDurationInMillis = playlistDuration * 60000
+        
+        while totalDuration < playlistDurationInMillis {
+            for song in songData {
+                
+                totalDuration += song[1] as! Int
+                songs[0].append(song[0] as! String)
+                songs[2].append(song[2] as! String)
             }
-            
-            
-        })
+        }
         
+        
+        
+        print(songs)
+        return songs
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -172,17 +177,74 @@ class CreatePlaylistViewControllers: UIViewController, UIPickerViewDataSource, U
     }
     
     @IBAction func createPlaylist(_ sender: UIBarButtonItem) {
+        var data: [String] = []
+        var songNames: [String] = []
+        var songDurations: [Int] = []
+        var songsIds: [String] = []
+        
+        let mood = txtMood.text
+        let activity = txtActivity.text
+        let duration = Int(txtDuration.text!)
+        
+        playlistManager.retrieveMoodData(myMood: mood!, completion: { (moodArray) in
+            data = moodArray!
+            
+                self.playlistManager.retrieveActivityData(myActivity: activity!, completion: { (activityArray) in
+                    data += activityArray!
+                    var noDuplicateIds: [String] = []
+                    var noDuplicates: [MediaItem] = []
+                    self.retrieveSongs(terms: data, completion: { (songArray) in
+                        for song in songArray! {
+                            if !noDuplicateIds.contains(song.identifier) {
+                                noDuplicateIds.append(song.identifier)
+                                noDuplicates.append(song)
+                            }
+                        }
+                        var songData: [[Any]] = []
+                        let shuffledSongs = noDuplicates.shuffled()
+                        for song in shuffledSongs {
+                            songNames.append(song.name)
+                            songDurations.append(song.duration)
+                            songsIds.append(song.identifier)
+                        }
+                        
+                        songData.append(songNames)
+                        songData.append(songDurations)
+                        songData.append(songsIds)
+                        
+                        self.chosenSongs = self.chooseSongs(songData, playlistDuration: duration!)
+                        
+                        
+                    })
+                })
+            
+        })
+        
+        
+        
+        
     }
     
     @IBAction func cancelCreatePlaylist(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+
     }
     
     @IBAction func chooseMood(_ sender: UITextField) {
+        moodPicker.dataSource = self
+        moodPicker.delegate = self
+        txtMood.inputView = moodPicker
     }
     
     @IBAction func chooseActivity(_ sender: UITextField) {
+        activityPicker.dataSource = self
+        activityPicker.delegate = self
+        txtActivity.inputView = activityPicker
     }
     
     @IBAction func chooseDuration(_ sender: UITextField) {
+        durationPicker.dataSource = self
+        durationPicker.delegate = self
+        txtDuration.inputView = durationPicker
     }
 }

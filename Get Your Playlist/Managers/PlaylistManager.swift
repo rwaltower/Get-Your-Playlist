@@ -9,7 +9,7 @@
 import Foundation
 import Parse
 
-class PlaylistManager: NSObject {
+class PlaylistManager {
     
     let currentUser = PFUser.current()
     
@@ -24,13 +24,9 @@ class PlaylistManager: NSObject {
         
     }
     
-    func retrieveMoodData(myMood: String, completion: @escaping (_ moodArray: [[String]]? ) -> ()) {
-        var moodArray: [[String]] = []
-        let artistArray: [String] = []
-        let genreArray: [String] = []
-
-        moodArray.append(artistArray)
-        moodArray.append(genreArray)
+    func retrieveMoodData(myMood: String, completion: @escaping (_ moodArray: [String]? ) -> ()) {
+        var moodArray: [String] = []
+        
         let query = PFQuery(className: "Moods")
         query.whereKey("name", equalTo:myMood)
         query.getFirstObjectInBackground{ (object: PFObject?, error: Error?) in
@@ -45,8 +41,8 @@ class PlaylistManager: NSObject {
                     if let error = error {
                         print(error.localizedDescription)
                     } else if object != nil {
-                        moodArray[0] = object!["artists"] as! [String]
-                        moodArray[1] = object!["genres"] as! [String]
+                        moodArray += object!["artists"] as! [String]
+                        moodArray += object!["genres"] as! [String]
                     }
                     
                     completion(moodArray)
@@ -57,13 +53,9 @@ class PlaylistManager: NSObject {
         
     }
     
-    func retrieveActivityData(myActivity: String, completion: @escaping (_ activityArray: [[String]]? ) -> ()) {
-        var activityArray: [[String]] = []
-        let artistArray: [String] = []
-        let genreArray: [String] = []
+    func retrieveActivityData(myActivity: String, completion: @escaping (_ activityArray: [String]? ) -> ()) {
+        var activityArray: [String] = []
         
-        activityArray.append(artistArray)
-        activityArray.append(genreArray)
         let query = PFQuery(className: "Activities")
         query.whereKey("name", equalTo:myActivity)
         query.getFirstObjectInBackground{ (object: PFObject?, error: Error?) in
@@ -78,8 +70,8 @@ class PlaylistManager: NSObject {
                     if let error = error {
                         print(error.localizedDescription)
                     } else if object != nil {
-                        activityArray[0] = object!["artists"] as! [String]
-                        activityArray[1] = object!["genres"] as! [String]
+                        activityArray += object!["artists"] as! [String]
+                        activityArray += object!["genres"] as! [String]
                     }
                     
                     completion(activityArray)
