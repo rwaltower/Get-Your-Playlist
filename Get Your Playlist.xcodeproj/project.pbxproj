@@ -49,6 +49,9 @@
 		67C85E2E21ACB214008B4E91 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		67C85E2F21ACB23E008B4E91 /* Montserrat 500.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat 500.ttf"; sourceTree = "<group>"; };
 		67C85E3021ACB24F008B4E91 /* Montserrat 700.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat 700.ttf"; sourceTree = "<group>"; };
+		67FCE3FB21AE0094001469E6 /* Lovelo Line Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lovelo Line Bold.otf"; sourceTree = "<group>"; };
+		67FCE3FC21AE0094001469E6 /* Lovelo Line Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lovelo Line Light.otf"; sourceTree = "<group>"; };
+		67FCE3FD21AE0094001469E6 /* Lovelo Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lovelo Black.otf"; sourceTree = "<group>"; };
 		ACBA9464E7518A33F50542B5 /* Pods-Get Your Playlist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Get Your Playlist.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Get Your Playlist/Pods-Get Your Playlist.debug.xcconfig"; sourceTree = "<group>"; };
 		C5274BAF21A058E700EFEC05 /* Get Your Playlist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Get Your Playlist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5274BB221A058E800EFEC05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +199,9 @@
 		C5274C0321A902EA00EFEC05 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				67FCE3FD21AE0094001469E6 /* Lovelo Black.otf */,
+				67FCE3FB21AE0094001469E6 /* Lovelo Line Bold.otf */,
+				67FCE3FC21AE0094001469E6 /* Lovelo Line Light.otf */,
 				67C85E2F21ACB23E008B4E91 /* Montserrat 500.ttf */,
 				67C85E3021ACB24F008B4E91 /* Montserrat 700.ttf */,
 				67C85E2E21ACB214008B4E91 /* OpenSans-Bold.ttf */,

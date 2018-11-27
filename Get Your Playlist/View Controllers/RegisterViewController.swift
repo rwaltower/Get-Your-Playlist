@@ -25,38 +25,57 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let iconWidth = 20;
+        let iconHeight = 20;
+        
+        //Define textfields
+        let firstNameImageView = UIImageView()
+        let userImg = UIImage(named: "user")
+        firstNameImageView.image = userImg
+        
+        let mailImageView = UIImageView()
+        let mailImg = UIImage(named: "mail")
+        mailImageView.image = mailImg
+        
+        let lockImageView = UIImageView()
+        let lockImg = UIImage(named: "lock")
+        lockImageView.image = lockImg
+        
+        // set frame on image before adding it to the uitextfield
+        firstNameImageView.frame = CGRect(x: 5, y: 5, width: iconWidth, height: iconHeight)
+        txtFirstName.leftViewMode = UITextField.ViewMode.always
+        txtFirstName.addSubview(firstNameImageView)
+        
+        mailImageView.frame = CGRect(x: 5, y: 5, width: iconWidth, height: iconHeight)
+        txtEmail.leftViewMode = UITextField.ViewMode.always
+        txtEmail.addSubview(firstNameImageView)
+        
+        lockImageView.frame = CGRect(x: 5, y: 5, width: iconWidth, height: iconHeight)
+        txtPassword.leftViewMode = UITextField.ViewMode.always
+        txtPassword.addSubview(firstNameImageView)
+        
         var fields: UITextField = [txtFirstName, txtLastName, txtEmail, txtUsername, txtPassword, txtConfirmPassword]
         
-        roundCorners(txtField: fields)
-        
-        let userImg = UIImage(named: "user")
-        addLeftIcon(txtField: txtFirstName, icon: userImg)
-        
-        let mailImg = UIImage(named: "mail")
-        addLeftIcon(txtField: txtEmail, icon: mailImg)
-        
-        let lockImg = UIImage(named: "lock")
-        addLeftIcon(txtField: txtPassword, icon: lockImg)
+        //Calling methods to design text field
+        roundCorners_AddPadding(txtField: fields)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func addLeftIcon(txtField: UITextField, icon: UIImage)
+    //Customizes text fields with rounded corners and padding
+    func roundCorners_AddPadding(txtField: [UITextField])
     {
-        let leftImageView = UIImageView(frame: CGRect(x: 20, y: 0, width: 20, height: 20))
-        leftImageView.image = icon
-        txtField.leftView = leftImageView
-        txtField.leftViewMode = .always
-    }
-    
-    func roundCorners(txtField: [UITextField])
-    {
+        //Set padding
+        let paddingView = UIView(frame: CGRectMake(0, 0, 25, field.frame.height))
+        
         for field in txtField
         {
-            txtField.layer.cornerRadius = 15.0
-            txtField.layer.borderWidth = 2.0
+            field.leftView = paddingView
+            
+            field.layer.cornerRadius = 15.0
+            field.layer.borderWidth = 2.0
         }
     }
     

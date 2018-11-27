@@ -22,6 +22,11 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        var fields: UITextField = [txtUsername, txtPassword]
+        
+        //Calling methods to design text field
+        roundCorners_AddPadding(txtField: fields)
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,6 +48,21 @@ class LoginViewController: UIViewController {
                     self.displayErrorMessage(message: (descrip))
                 }
             }
+        }
+    }
+    
+    //Customizes text fields with rounded corners and padding
+    func roundCorners_AddPadding(txtField: [UITextField])
+    {
+        //Set padding
+        let paddingView = UIView(frame: CGRectMake(0, 0, 25, field.frame.height))
+        
+        for field in txtField
+        {
+            field.leftView = paddingView
+            
+            field.layer.cornerRadius = 15.0
+            field.layer.borderWidth = 2.0
         }
     }
     
