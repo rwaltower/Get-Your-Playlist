@@ -39,6 +39,14 @@
 		C5274C0D21AA0B7B00EFEC05 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274C0C21AA0B7B00EFEC05 /* Genre.swift */; };
 		C5C1CD0B21AB7D2400E9E76B /* CreatePlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1CD0A21AB7D2400E9E76B /* CreatePlaylistViewController.swift */; };
 		C5C1CD0D21ADF25900E9E76B /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1CD0C21ADF25900E9E76B /* PlaylistViewController.swift */; };
+		C5C1CD1521AE198400E9E76B /* Lovelo Line Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C5C1CD0E21AE197F00E9E76B /* Lovelo Line Light.otf */; };
+		C5C1CD1621AE198400E9E76B /* Montserrat 500.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5C1CD0F21AE198100E9E76B /* Montserrat 500.ttf */; };
+		C5C1CD1721AE198400E9E76B /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5C1CD1021AE198200E9E76B /* OpenSans-Regular.ttf */; };
+		C5C1CD1821AE198400E9E76B /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5C1CD1121AE198200E9E76B /* OpenSans-Bold.ttf */; };
+		C5C1CD1921AE198400E9E76B /* Lovelo Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = C5C1CD1221AE198300E9E76B /* Lovelo Black.otf */; };
+		C5C1CD1A21AE198400E9E76B /* Lovelo Line Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C5C1CD1321AE198300E9E76B /* Lovelo Line Bold.otf */; };
+		C5C1CD1B21AE198400E9E76B /* Montserrat 700.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5C1CD1421AE198300E9E76B /* Montserrat 700.ttf */; };
+		C5C1CD1E21AE1A5B00E9E76B /* Main2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C1CD1C21AE1A5A00E9E76B /* Main2.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +85,14 @@
 		C5274C0C21AA0B7B00EFEC05 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		C5C1CD0A21AB7D2400E9E76B /* CreatePlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlaylistViewController.swift; sourceTree = "<group>"; };
 		C5C1CD0C21ADF25900E9E76B /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
+		C5C1CD0E21AE197F00E9E76B /* Lovelo Line Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lovelo Line Light.otf"; sourceTree = "<group>"; };
+		C5C1CD0F21AE198100E9E76B /* Montserrat 500.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat 500.ttf"; sourceTree = "<group>"; };
+		C5C1CD1021AE198200E9E76B /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		C5C1CD1121AE198200E9E76B /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		C5C1CD1221AE198300E9E76B /* Lovelo Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lovelo Black.otf"; sourceTree = "<group>"; };
+		C5C1CD1321AE198300E9E76B /* Lovelo Line Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lovelo Line Bold.otf"; sourceTree = "<group>"; };
+		C5C1CD1421AE198300E9E76B /* Montserrat 700.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat 700.ttf"; sourceTree = "<group>"; };
+		C5C1CD1D21AE1A5A00E9E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main2.storyboard; sourceTree = "<group>"; };
 		E37C3CCCE33CD10D9A344CC2 /* Pods_Get_Your_Playlist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Get_Your_Playlist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -130,6 +146,7 @@
 		C5274BB121A058E700EFEC05 /* Get Your Playlist */ = {
 			isa = PBXGroup;
 			children = (
+				C5C1CD1C21AE1A5A00E9E76B /* Main2.storyboard */,
 				C5274C0321A902EA00EFEC05 /* Utilities */,
 				C5274BEF21A8460300EFEC05 /* Model */,
 				C5274BB221A058E800EFEC05 /* AppDelegate.swift */,
@@ -192,6 +209,13 @@
 		C5274C0321A902EA00EFEC05 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				C5C1CD1221AE198300E9E76B /* Lovelo Black.otf */,
+				C5C1CD1321AE198300E9E76B /* Lovelo Line Bold.otf */,
+				C5C1CD0E21AE197F00E9E76B /* Lovelo Line Light.otf */,
+				C5C1CD0F21AE198100E9E76B /* Montserrat 500.ttf */,
+				C5C1CD1421AE198300E9E76B /* Montserrat 700.ttf */,
+				C5C1CD1121AE198200E9E76B /* OpenSans-Bold.ttf */,
+				C5C1CD1021AE198200E9E76B /* OpenSans-Regular.ttf */,
 				C5274BF821A84F0F00EFEC05 /* AppleMusicRequestFactory.swift */,
 				C5274BF721A84F0A00EFEC05 /* JSONKeys.swift */,
 			);
@@ -261,7 +285,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5274BC021A0591A00EFEC05 /* LaunchScreen.storyboard in Resources */,
+				C5C1CD1A21AE198400E9E76B /* Lovelo Line Bold.otf in Resources */,
+				C5C1CD1E21AE1A5B00E9E76B /* Main2.storyboard in Resources */,
+				C5C1CD1821AE198400E9E76B /* OpenSans-Bold.ttf in Resources */,
+				C5C1CD1621AE198400E9E76B /* Montserrat 500.ttf in Resources */,
+				C5C1CD1521AE198400E9E76B /* Lovelo Line Light.otf in Resources */,
 				C5274BBD21A0591A00EFEC05 /* Assets.xcassets in Resources */,
+				C5C1CD1B21AE198400E9E76B /* Montserrat 700.ttf in Resources */,
+				C5C1CD1921AE198400E9E76B /* Lovelo Black.otf in Resources */,
+				C5C1CD1721AE198400E9E76B /* OpenSans-Regular.ttf in Resources */,
 				C5274BB821A058E800EFEC05 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,6 +401,14 @@
 				C5274BBF21A0591A00EFEC05 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C5C1CD1C21AE1A5A00E9E76B /* Main2.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C5C1CD1D21AE1A5A00E9E76B /* Base */,
+			);
+			name = Main2.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
