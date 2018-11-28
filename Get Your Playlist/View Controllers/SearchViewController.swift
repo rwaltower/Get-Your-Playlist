@@ -15,10 +15,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var txtChoices: UITextView!
     @IBOutlet weak var lblTitle: UINavigationItem!
-    @IBOutlet weak var choicesTable: UITableView!
     
     @IBOutlet weak var btnDone: UIBarButtonItem!
     @IBOutlet weak var btnCancel: UIBarButtonItem!
@@ -37,7 +36,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         // Do any additional setup after loading the view, typically from a nib.
         lblTitle.title = searchTitle
         
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target:self.view, action: Selector("endEditing:")))
     }
     
     override func didReceiveMemoryWarning() {
@@ -100,6 +98,13 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                 self.displayErrorMessage(message: "You can only choose 3 artists.")
             } else {
                 artistNames.append(cellItem ?? "")
+                self.txtChoices.text = ""
+                for name in artistNames {
+                    self.txtChoices.text += "\(name), "
+                }
+                for name in genreNames {
+                    self.txtChoices.text += "\(name), "
+                }
             }
         case 1:
             if genreNames.count == 3 {
@@ -108,12 +113,20 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
 
             } else {
                 genreNames.append(cellItem ?? "")
+                for name in artistNames {
+                    self.txtChoices.text += "\(name), "
+                }
+                for name in genreNames {
+                    self.txtChoices.text += "\(name), "
+                }
 
             }
             
         default:
             break
         }
+        
+        self.txtChoices.setNeedsDisplay()
         
     }
     
@@ -126,13 +139,27 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         {
         case 0:
             artistNames = artistNames.filter{$0 != cellItem }
+            for name in artistNames {
+                self.txtChoices.text += "\(name), "
+            }
+            for name in genreNames {
+                self.txtChoices.text += "\(name), "
+            }
             
         case 1:
             genreNames = genreNames.filter{$0 != cellItem }
+            for name in artistNames {
+                self.txtChoices.text += "\(name), "
+            }
+            for name in genreNames {
+                self.txtChoices.text += "\(name), "
+            }
 
         default:
             break
         }
+        self.txtChoices.setNeedsDisplay()
+
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -141,7 +168,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         self.genres = []
         
         self.tableView.reloadData()
-        activityIndicator?.startAnimating()
         
         switch searchBar.selectedScopeButtonIndex
         {
@@ -154,7 +180,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                     } else {
                         //error
                     }
-                    self.activityIndicator?.stopAnimating()
                 }
             })
             
@@ -168,7 +193,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                     } else {
                         //error
                     }
-                    self.activityIndicator?.stopAnimating()
                 }
             })
             

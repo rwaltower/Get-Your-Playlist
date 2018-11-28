@@ -13,34 +13,15 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var btnCreatePlaylist: UIButton!
     @IBOutlet weak var playlistsTable: UITableView!
+    @IBOutlet weak var btnLogout: UIButton!
     
     @IBOutlet weak var btnPersonalization: UIButton!
     
-    var userPlaylists: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target:self.view, action: Selector("endEditing:")))
-        
-        let currentUser = PFUser.current()
-        let query = PFQuery(className: "user_has_playlists")
-        query.whereKey("user_id", equalTo: currentUser!)
-        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
-            if let error = error {
-                
-                print(error.localizedDescription)
-            } else if let objects = objects {
-                
-                print("Successfully retrieved user playlists.")
-                
-                for object in objects {
-                    self.userPlaylists.append(object["name"] as! String)
-                }
-            }
-            
-        }
-        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target:self.view, action: #selector(UIView.endEditing(_:))))
         
         
 
@@ -52,12 +33,17 @@ class HomeViewController: UIViewController {
     
     @IBAction func createPlaylistButtonPressed(_ sender: UIButton) {
         let createPlaylistViewController = self.storyboard?.instantiateViewController(withIdentifier: "CreatePlaylistViewController") as! CreatePlaylistViewController
-        self.present(createPlaylistViewController, animated: true)
+        self.present(createPlaylistViewController, animated: true, completion: nil)
     }
     
     @IBAction func personalizationButtonPressed(_ sender: UIButton) {
         let personalizationViewController = self.storyboard?.instantiateViewController(withIdentifier: "PersonalizationViewController") as! PersonalizationViewController
         self.present(personalizationViewController, animated: true, completion: nil)
+    }
+    @IBAction func logout(_ sender: UIButton) {
+        PFUser.logOut()
+        let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        self.present(loginViewController, animated: true, completion: nil)
     }
 }
 

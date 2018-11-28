@@ -58,6 +58,7 @@ class PlaylistManager {
                 print(error.localizedDescription)
             } else if object != nil {
                 let query = PFQuery(className: "user_has_moods")
+                query.order(byAscending: "createdAt")
                 query.whereKey("user_id", equalTo: self.currentUser!)
                 query.whereKey("mood_id", equalTo: object!)
                 query.getFirstObjectInBackground { (object: PFObject?, error: Error?) in
@@ -80,6 +81,7 @@ class PlaylistManager {
         var activityArray: [String] = []
         
         let query = PFQuery(className: "Activities")
+        query.order(byAscending: "createdAt")
         query.whereKey("name", equalTo:myActivity)
         query.getFirstObjectInBackground{ (object: PFObject?, error: Error?) in
             if let error = error {

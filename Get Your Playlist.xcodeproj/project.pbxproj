@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		939A7D7A069D211134A314CC /* Pods_Get_Your_Playlist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E37C3CCCE33CD10D9A344CC2 /* Pods_Get_Your_Playlist.framework */; };
 		C5274BB321A058E800EFEC05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274BB221A058E800EFEC05 /* AppDelegate.swift */; };
-		C5274BB821A058E800EFEC05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5274BB621A058E800EFEC05 /* Main.storyboard */; };
 		C5274BBB21A058E900EFEC05 /* Get_Your_Playlist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C5274BB921A058E900EFEC05 /* Get_Your_Playlist.xcdatamodeld */; };
 		C5274BBD21A0591A00EFEC05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5274BBC21A0591A00EFEC05 /* Assets.xcassets */; };
 		C5274BC021A0591A00EFEC05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5274BBE21A0591A00EFEC05 /* LaunchScreen.storyboard */; };
@@ -37,6 +36,8 @@
 		C5274C0921A9E78700EFEC05 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274C0821A9E78700EFEC05 /* Song.swift */; };
 		C5274C0B21AA02E300EFEC05 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274C0A21AA02E300EFEC05 /* Artist.swift */; };
 		C5274C0D21AA0B7B00EFEC05 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5274C0C21AA0B7B00EFEC05 /* Genre.swift */; };
+		C585F99521AE6CA20098581C /* PlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C585F99421AE6CA20098581C /* PlaylistsViewController.swift */; };
+		C585F99721AE6F4A0098581C /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C585F99621AE6F4A0098581C /* PlaylistTableViewCell.swift */; };
 		C5C1CD0B21AB7D2400E9E76B /* CreatePlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1CD0A21AB7D2400E9E76B /* CreatePlaylistViewController.swift */; };
 		C5C1CD0D21ADF25900E9E76B /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1CD0C21ADF25900E9E76B /* PlaylistViewController.swift */; };
 		C5C1CD1521AE198400E9E76B /* Lovelo Line Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C5C1CD0E21AE197F00E9E76B /* Lovelo Line Light.otf */; };
@@ -55,7 +56,6 @@
 		ACBA9464E7518A33F50542B5 /* Pods-Get Your Playlist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Get Your Playlist.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Get Your Playlist/Pods-Get Your Playlist.debug.xcconfig"; sourceTree = "<group>"; };
 		C5274BAF21A058E700EFEC05 /* Get Your Playlist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Get Your Playlist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5274BB221A058E800EFEC05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C5274BB721A058E800EFEC05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C5274BBA21A058E900EFEC05 /* Get_Your_Playlist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Get_Your_Playlist.xcdatamodel; sourceTree = "<group>"; };
 		C5274BBC21A0591A00EFEC05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C5274BBF21A0591A00EFEC05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -84,6 +84,8 @@
 		C5274C0821A9E78700EFEC05 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		C5274C0A21AA02E300EFEC05 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		C5274C0C21AA0B7B00EFEC05 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		C585F99421AE6CA20098581C /* PlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsViewController.swift; sourceTree = "<group>"; };
+		C585F99621AE6F4A0098581C /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
 		C5C1CD0A21AB7D2400E9E76B /* CreatePlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlaylistViewController.swift; sourceTree = "<group>"; };
 		C5C1CD0C21ADF25900E9E76B /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		C5C1CD0E21AE197F00E9E76B /* Lovelo Line Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lovelo Line Light.otf"; sourceTree = "<group>"; };
@@ -155,7 +157,6 @@
 				C5274BD321A62E6100EFEC05 /* View Controllers */,
 				C5274BD121A618B100EFEC05 /* Extensions.swift */,
 				C5274BD421A8403000EFEC05 /* Managers */,
-				C5274BB621A058E800EFEC05 /* Main.storyboard */,
 				C5274BBC21A0591A00EFEC05 /* Assets.xcassets */,
 				C5274BBE21A0591A00EFEC05 /* LaunchScreen.storyboard */,
 				C5274BC121A0591A00EFEC05 /* Info.plist */,
@@ -176,6 +177,8 @@
 				C5C1CD0A21AB7D2400E9E76B /* CreatePlaylistViewController.swift */,
 				C5C1CD0C21ADF25900E9E76B /* PlaylistViewController.swift */,
 				C5C1CD2F21AE23D900E9E76B /* TabBarController.swift */,
+				C585F99421AE6CA20098581C /* PlaylistsViewController.swift */,
+				C585F99621AE6F4A0098581C /* PlaylistTableViewCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -297,7 +300,6 @@
 				C5C1CD1B21AE198400E9E76B /* Montserrat 700.ttf in Resources */,
 				C5C1CD1921AE198400E9E76B /* Lovelo Black.otf in Resources */,
 				C5C1CD1721AE198400E9E76B /* OpenSans-Regular.ttf in Resources */,
-				C5274BB821A058E800EFEC05 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +368,7 @@
 				C5274C0221A8DEA400EFEC05 /* PersonalizationManager.swift in Sources */,
 				C5C1CD0B21AB7D2400E9E76B /* CreatePlaylistViewController.swift in Sources */,
 				C5274BDC21A8428F00EFEC05 /* MediaLibraryManager.swift in Sources */,
+				C585F99521AE6CA20098581C /* PlaylistsViewController.swift in Sources */,
 				C5274C0D21AA0B7B00EFEC05 /* Genre.swift in Sources */,
 				C5274BCC21A4E99700EFEC05 /* LoginViewController.swift in Sources */,
 				C5274BCA21A4E25200EFEC05 /* RegisterViewController.swift in Sources */,
@@ -375,6 +378,7 @@
 				C5C1CD0D21ADF25900E9E76B /* PlaylistViewController.swift in Sources */,
 				C5274C0521A9E6A100EFEC05 /* SearchViewController.swift in Sources */,
 				C5274BF421A8463100EFEC05 /* Artwork.swift in Sources */,
+				C585F99721AE6F4A0098581C /* PlaylistTableViewCell.swift in Sources */,
 				C5274BDE21A8428F00EFEC05 /* AuthorizationManager.swift in Sources */,
 				C5274BE021A8428F00EFEC05 /* AppleMusicManager.swift in Sources */,
 				C5274BDD21A8428F00EFEC05 /* MusicPlayerManager.swift in Sources */,
@@ -391,14 +395,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C5274BB621A058E800EFEC05 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C5274BB721A058E800EFEC05 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C5274BBE21A0591A00EFEC05 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

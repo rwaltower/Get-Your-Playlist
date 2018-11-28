@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target:self.view, action: Selector("endEditing:")))
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target:self.view, action: #selector(UIView.endEditing(_:))))
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
             if user != nil {
                 let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
                 tabBarController.selectedIndex = 0
-                self.present(tabBarController, animated: true)
+                self.present(tabBarController, animated: true, completion: nil)
             }else{
                 if let descrip = error?.localizedDescription{
                     self.displayErrorMessage(message: (descrip))
@@ -62,9 +62,36 @@ class LoginViewController: UIViewController {
     
     @IBAction func registerButtonTapped(_ sender: Any) {
         let registerViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as! RegisterViewController
-        self.present(registerViewController, animated: true)
+        self.present(registerViewController, animated: true, completion: nil)
     }
     
+    @IBAction func forgotPassword(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Forgot Password", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        alert.addTextField(configurationHandler: { textField in
+            textField.placeholder = "Input your email here..."
+        })
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            
+            if let email = alert.textFields?.first?.text {
+                PFUser.requestPasswordResetForEmail(inBackground: email)
+                let alertView = UIAlertController(title: "Success", message: "An email with instructions for resetting your password has been sent.", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+                }
+                alertView.addAction(OKAction)
+                if let presenter = alertView.popoverPresentationController {
+                    presenter.sourceView = self.view
+                    presenter.sourceRect = self.view.bounds
+                }
+                self.present(alertView, animated: true, completion:nil)
+                print("An email with instructions for resetting your password has been sent.")
+            }
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
 }
 

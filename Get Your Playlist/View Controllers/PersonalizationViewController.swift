@@ -25,7 +25,7 @@ class PersonalizationViewController: UIPageViewController, UIPageViewControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target:self.view, action: Selector("endEditing:")))
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target:self.view, action: #selector(UIView.endEditing(_:))))
         
          PersonaliaztionManager.personalizationManager.getPersonalizationPageTitles(completion: {(titles, moods, activities) in
             self.pageTitles = titles!
@@ -74,12 +74,17 @@ class PersonalizationViewController: UIPageViewController, UIPageViewControllerD
     // MARK:- Other Methods
     func getViewControllerAtIndex(index: NSInteger) -> PageContentViewController
     {
+        
+        if index > 0 {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "submitChoices"), object: nil)
+        }
         // Create a new view controller and pass suitable data.
         let pageContentViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageContentViewController") as! PageContentViewController
 
         pageContentViewController.strTitle = "When I'm \(pageTitles[index])..."
         pageContentViewController.pageIndex = index
         pageContentViewController.totalPages = pageTitles.count
+        pageContentViewController.personalizationTopic = pageTitles[index]
         
         return pageContentViewController
     }

@@ -42,7 +42,7 @@ class CreatePlaylistViewController: UIViewController, UIPickerViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target:self.view, action: Selector("endEditing:")))
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target:self.view, action: #selector(UIView.endEditing(_:))))
         PersonaliaztionManager.personalizationManager.getPersonalizationPageTitles(completion: {(titles, moods, activities) in
             
             for mood in moods {
@@ -87,7 +87,11 @@ class CreatePlaylistViewController: UIViewController, UIPickerViewDataSource, UI
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        if pickerView == durationPicker {
+            return 2
+        } else {
         return 1
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -98,7 +102,11 @@ class CreatePlaylistViewController: UIViewController, UIPickerViewDataSource, UI
             return activityNames.count
         }
         if pickerView == durationPicker {
+            if component == 1 {
+                return 1
+            } else {
             return durationAmounts.count
+            }
         } else {
             return 0
         }
@@ -112,7 +120,11 @@ class CreatePlaylistViewController: UIViewController, UIPickerViewDataSource, UI
             return activityNames[row]
         }
         if pickerView == durationPicker {
+            if component == 1 {
+                return "minutes"
+            } else {
             return String(durationAmounts[row])
+            }
         } else {
             return ""
         }
@@ -194,6 +206,15 @@ class CreatePlaylistViewController: UIViewController, UIPickerViewDataSource, UI
         playlistManager.retrieveMoodData(myMood: mood!, completion: { (moodArray) in
             data = moodArray!
             
+            if moodArray?.count == 0 {
+                let dataAlert = UIAlertController(title: "Error", message: "You don't have enough data to create this playlist. Try taking the Personalization Quiz again.", preferredStyle: .alert)
+                dataAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(dataAlert, animated: true)
+                
+                self.dismiss(animated: true, completion: nil)
+
+            } else {
+            
                 self.playlistManager.retrieveActivityData(myActivity: activity!, completion: { (activityArray) in
                     data += activityArray!
                     var noDuplicateIds: [String] = []
@@ -240,6 +261,7 @@ class CreatePlaylistViewController: UIViewController, UIPickerViewDataSource, UI
                         
                     })
                 })
+            }
             
         })
         

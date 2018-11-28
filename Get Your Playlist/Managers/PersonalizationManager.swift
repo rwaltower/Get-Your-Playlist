@@ -12,13 +12,13 @@ import Parse
 class PersonaliaztionManager: NSObject {
     
     static let personalizationManager = PersonaliaztionManager()
-    
+    var moodObjects: [PFObject] = []
+    var activityObjects: [PFObject] = []
+    var titles: [String] = []
     
     
     func getPersonalizationPageTitles(completion: @escaping (_ titles: [String]?, _ moodObjects: [PFObject], _ activityObjects: [PFObject])->()) {
-        var moodObjects: [PFObject] = []
-        var activityObjects: [PFObject] = []
-        var titles: [String] = []
+        
         let moodsQuery = PFQuery(className: "Moods")
         moodsQuery.whereKeyExists("name")
         moodsQuery.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
@@ -26,12 +26,12 @@ class PersonaliaztionManager: NSObject {
                 
                 print(error.localizedDescription)
             } else if let objects = objects {
-                moodObjects = objects
+                self.moodObjects = objects
                 print("Successfully retrieved moods.")
                 
                 for object in objects {
                     
-                    titles.append(object["name"] as! String)
+                    self.titles.append(object["name"] as! String)
                 }
             }
             let activitiesQuery = PFQuery(className: "Activities")
@@ -40,15 +40,15 @@ class PersonaliaztionManager: NSObject {
                     
                     print(error.localizedDescription)
                 } else if let objects = objects {
-                    activityObjects = objects
+                    self.activityObjects = objects
                     print("Successfully retrieved activities.")
                     
                     for object in objects {
-                        titles.append(object["name"] as! String)
+                        self.titles.append(object["name"] as! String)
                     }
                 }
                 
-                completion(titles, moodObjects, activityObjects)
+                completion(self.titles, self.moodObjects, self.activityObjects)
             }
         }
         
