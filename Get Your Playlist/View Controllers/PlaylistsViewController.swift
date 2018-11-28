@@ -19,7 +19,7 @@ class PlaylistsViewController: UIViewController, UITableViewDataSource, UITableV
     var playlistIds: [UUID] = []
     
     @IBOutlet weak var playlistsTable: UITableView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("can't find playlists")

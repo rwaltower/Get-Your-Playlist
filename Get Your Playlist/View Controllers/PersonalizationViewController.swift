@@ -24,10 +24,7 @@ class PersonalizationViewController: UIPageViewController, UIPageViewControllerD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target:self.view, action: #selector(UIView.endEditing(_:))))
-        
-         PersonaliaztionManager.personalizationManager.getPersonalizationPageTitles(completion: {(titles, moods, activities) in
+        PersonaliaztionManager.personalizationManager.getPersonalizationPageTitles(completion: {(titles, moods, activities) in
             self.pageTitles = titles!
             self.dataSource = self
             
@@ -75,9 +72,6 @@ class PersonalizationViewController: UIPageViewController, UIPageViewControllerD
     func getViewControllerAtIndex(index: NSInteger) -> PageContentViewController
     {
         
-        if index > 0 {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "submitChoices"), object: nil)
-        }
         // Create a new view controller and pass suitable data.
         let pageContentViewController = self.storyboard?.instantiateViewController(withIdentifier: "PageContentViewController") as! PageContentViewController
 

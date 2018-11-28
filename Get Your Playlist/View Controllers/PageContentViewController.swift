@@ -42,8 +42,6 @@ class PageContentViewController: UIViewController, UITableViewDataSource, UITabl
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.refreshChoices), name: NSNotification.Name(rawValue: "refreshTable"), object: nil)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(self.submitChoices), name: NSNotification.Name(rawValue: "submitChoices"), object: nil)
         
         
 
@@ -87,7 +85,7 @@ class PageContentViewController: UIViewController, UITableViewDataSource, UITabl
         do {
             if try isMood(data: personalizationTopic) {
                 print("got here")
-                let mood = PFObject(className: "user_has_moods")
+                var mood = PFObject(className: "user_has_moods")
                 mood["user_id"] = currentUser!
                 mood["mood_id"] = PersonaliaztionManager.personalizationManager.moodObjects[pageIndex]
                 mood["genres"] = genreData
@@ -104,7 +102,7 @@ class PageContentViewController: UIViewController, UITableViewDataSource, UITabl
             } else if try isActivity(data: personalizationTopic) {
                 print("got here")
 
-                let activity = PFObject(className: "user_has_activities")
+                var activity = PFObject(className: "user_has_activities")
                 activity["user_id"] = currentUser!
                 activity["activity_id"] = PersonaliaztionManager.personalizationManager.activityObjects[pageIndex]
                 activity["genres"] = genreData
@@ -120,62 +118,19 @@ class PageContentViewController: UIViewController, UITableViewDataSource, UITabl
                     
                 }
             }
-            
-            if pageIndex == (totalPages - 1) {
-                let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
-                tabBarController.selectedIndex = 0
-                self.present(tabBarController, animated: true, completion: nil)
-                
-            }
+
         } catch {
             print("Error determining mood or activity.")
         }
         
-    }
-    @objc func submitChoices() {
-        print("got here")
-
-            do {
-                if try isMood(data: personalizationTopic) {
-                    let mood = PFObject(className: "user_has_moods")
-                    mood["user_id"] = currentUser!
-                    mood["mood_id"] = PersonaliaztionManager.personalizationManager.moodObjects[pageIndex]
-                    mood["genres"] = genreData
-                    mood["artists"] = artistData
-                    mood.saveInBackground { (success: Bool, error: Error?) in
-                        if (success) {
-                            print("Successfully saved your mood data.")
-                        } else {
-                            print("couldnt save")
-                            print(error?.localizedDescription as Any)
-                        }
-                        
-                    }
-                    
-                    
-                } else if try isActivity(data: personalizationTopic) == true {
-                    let activity = PFObject(className: "user_has_activities")
-                    activity["user_id"] = currentUser!
-                    activity["activity_id"] = PersonaliaztionManager.personalizationManager.activityObjects[pageIndex]
-                    activity["genres"] = genreData
-                    activity["artists"] = artistData
-                    activity.saveInBackground { (success: Bool, error: Error?) in
-                        if (success) {
-                            print("Successfully saved your activity data.")
-                        } else {
-                            print(error?.localizedDescription as Any)
-                            print("couldnt save")
-
-                        }
-                        
-                    }
-                }
-            } catch {
-                print("Error determining mood or activity.")
-            }
+        self.btnDone.isEnabled = false;
+        if pageIndex == (totalPages - 1) {
+            let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+            tabBarController.selectedIndex = 0
+            self.present(tabBarController, animated: true, completion: nil)
             
-
-        
+        }
+    
     }
     
     func isMood(data: String) throws -> Bool {

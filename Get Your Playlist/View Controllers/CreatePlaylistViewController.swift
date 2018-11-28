@@ -242,13 +242,13 @@ class CreatePlaylistViewController: UIViewController, UIPickerViewDataSource, UI
                         
                         let playlist = self.playlistManager.createPlaylist(data: chosenSongIds, playlistName: self.txtPlaylistName.text!)
                         
-                        let newPlaylist = PFObject(className: "Playlist")
+                        var newPlaylist = PFObject(className: "Playlist")
                         newPlaylist["title"] = self.txtPlaylistName.text!
                         newPlaylist["songs"] = chosenSongIds
                         newPlaylist["uuid"] = playlist
                         newPlaylist.saveInBackground { (success: Bool, error: Error?) in
                             if (success) {
-                                let userPlaylist = PFObject(className: "user_has_playlists")
+                                var userPlaylist = PFObject(className: "user_has_playlists")
                                 userPlaylist["user_id"] = self.currentUser
                                 userPlaylist["playlist_id"] = userPlaylist
                             } else {

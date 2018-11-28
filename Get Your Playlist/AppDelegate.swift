@@ -38,12 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.server = "https://parseapi.back4app.com"
         }
         
-        authorizationManager.requestCloudServiceAuthorization()
+       /* authorizationManager.requestCloudServiceAuthorization()
         
         authorizationManager.requestMediaLibraryAuthorization()
-        
+        */
         Parse.initialize(with: configuration)
         saveInstallationObject()
+        
+        
         
         let user = PFUser.current()
         
