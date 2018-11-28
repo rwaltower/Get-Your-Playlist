@@ -8,7 +8,11 @@
 
 import Foundation
 import Parse
+import UIKit
+import StoreKit
+import MediaPlayer
 
+@objcMembers
 class PlaylistManager {
     
     let currentUser = PFUser.current()
@@ -19,9 +23,28 @@ class PlaylistManager {
     
     var mediaItems = [MediaItem]()
     
-    func createPlaylist(data: [String], duration: Int) {
+    func createPlaylist(data: [String], playlistName: String) -> String {
+        let uuid = UUID()
+        MPMediaLibrary.default().getPlaylist(with: uuid, creationMetadata: MPMediaPlaylistCreationMetadata(name: playlistName), completionHandler: { playlist, error in
+            
+            if let anError = error {
+                print("\(anError)")
+            }
+            
+            if error == nil {
+                
+                
+                for song_id in data {
+                    playlist!.addItem(withProductID: song_id)
+                }
+            }
+            
+            
+        })
         
+        let playlistId = uuid.uuidString
         
+        return playlistId
     }
     
     func retrieveMoodData(myMood: String, completion: @escaping (_ moodArray: [String]? ) -> ()) {

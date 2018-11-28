@@ -223,7 +223,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="chooseMood:" destination="sPc-nx-38B" eventType="editingDidEnd" id="u1T-VR-A6T"/>
+                                    <action selector="chooseMood:" destination="sPc-nx-38B" eventType="editingDidBegin" id="Ume-Jl-gpQ"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What are you doing?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pXN-bT-bML">
@@ -233,7 +233,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="chooseActivity:" destination="sPc-nx-38B" eventType="editingDidEnd" id="52T-dq-7G2"/>
+                                    <action selector="chooseActivity:" destination="sPc-nx-38B" eventType="editingDidBegin" id="Bjg-Ma-WMg"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How long?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WYg-Sh-xbl">
@@ -243,7 +243,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="chooseDuration:" destination="sPc-nx-38B" eventType="editingDidEnd" id="UZx-JQ-iMD"/>
+                                    <action selector="chooseDuration:" destination="sPc-nx-38B" eventType="editingDidBegin" id="5dT-he-b0I"/>
                                 </connections>
                             </textField>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kQ1-07-C2W">
