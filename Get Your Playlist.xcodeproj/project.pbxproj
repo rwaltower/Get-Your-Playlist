@@ -47,6 +47,7 @@
 		C5C1CD1A21AE198400E9E76B /* Lovelo Line Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C5C1CD1321AE198300E9E76B /* Lovelo Line Bold.otf */; };
 		C5C1CD1B21AE198400E9E76B /* Montserrat 700.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5C1CD1421AE198300E9E76B /* Montserrat 700.ttf */; };
 		C5C1CD1E21AE1A5B00E9E76B /* Main2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C1CD1C21AE1A5A00E9E76B /* Main2.storyboard */; };
+		C5C1CD3021AE23D900E9E76B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C1CD2F21AE23D900E9E76B /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +94,7 @@
 		C5C1CD1321AE198300E9E76B /* Lovelo Line Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lovelo Line Bold.otf"; sourceTree = "<group>"; };
 		C5C1CD1421AE198300E9E76B /* Montserrat 700.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat 700.ttf"; sourceTree = "<group>"; };
 		C5C1CD1D21AE1A5A00E9E76B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main2.storyboard; sourceTree = "<group>"; };
+		C5C1CD2F21AE23D900E9E76B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E37C3CCCE33CD10D9A344CC2 /* Pods_Get_Your_Playlist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Get_Your_Playlist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -173,6 +175,7 @@
 				C5274C0421A9E69F00EFEC05 /* SearchViewController.swift */,
 				C5C1CD0A21AB7D2400E9E76B /* CreatePlaylistViewController.swift */,
 				C5C1CD0C21ADF25900E9E76B /* PlaylistViewController.swift */,
+				C5C1CD2F21AE23D900E9E76B /* TabBarController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				C5274BE021A8428F00EFEC05 /* AppleMusicManager.swift in Sources */,
 				C5274BDD21A8428F00EFEC05 /* MusicPlayerManager.swift in Sources */,
 				C5274BFE21A89EC300EFEC05 /* PageContentViewController.swift in Sources */,
+				C5C1CD3021AE23D900E9E76B /* TabBarController.swift in Sources */,
 				C5274BDF21A8428F00EFEC05 /* ImageCacheManager.swift in Sources */,
 				C5274BDB21A8428E00EFEC05 /* AuthorizationDataSource.swift in Sources */,
 				C5274BF921A84F1100EFEC05 /* JSONKeys.swift in Sources */,

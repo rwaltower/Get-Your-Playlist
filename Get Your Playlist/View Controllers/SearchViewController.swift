@@ -36,6 +36,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         lblTitle.title = searchTitle
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target:self.view, action: Selector("endEditing:")))
     }
     
     override func didReceiveMemoryWarning() {

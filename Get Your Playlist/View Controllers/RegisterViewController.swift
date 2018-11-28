@@ -11,19 +11,19 @@ import Parse
 
 class RegisterViewController: UIViewController {
     
-    @IBOutlet weak var txtFirstName: UITextField!
-    @IBOutlet weak var txtLastName: UITextField!
+    @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtUsername: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtConfirmPassword: UITextField!
     
-    @IBOutlet weak var navBar: UINavigationItem!
-    @IBOutlet weak var btnCancel: UIBarButtonItem!
-    @IBOutlet weak var btnSubmit: UIBarButtonItem!
+    @IBOutlet weak var btnCancel: UIButton!
+    @IBOutlet weak var btnSubmit: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target:self.view, action: Selector("endEditing:")))
         
     }
     
@@ -31,12 +31,12 @@ class RegisterViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func submitButtonPressed(_ sneder: UIBarButtonItem) {
-        if(txtFirstName.text?.isEmpty)! || (txtLastName.text?.isEmpty)! || (txtEmail.text?.isEmpty)! || (txtUsername.text?.isEmpty)! || (txtPassword.text?.isEmpty)! || (txtConfirmPassword.text?.isEmpty)! {
+    @IBAction func submitButtonPressed(_ sender: UIButton) {
+        if(txtName.text?.isEmpty)! || (txtEmail.text?.isEmpty)! || (txtUsername.text?.isEmpty)! || (txtPassword.text?.isEmpty)! || (txtConfirmPassword.text?.isEmpty)! {
             let fieldAlertController = UIAlertController(title: "Alert", message: "Must fill in all field to submit.", preferredStyle: .alert)
             fieldAlertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(fieldAlertController, animated: true)
@@ -53,8 +53,7 @@ class RegisterViewController: UIViewController {
         user.username = txtUsername.text
         user.password = txtPassword.text
         user.email = txtEmail.text
-        user["first_name"] = txtFirstName.text
-        user["last_name"] = txtLastName.text
+        user["name"] = txtName.text
         
         let sv = UIViewController.displaySpinner(onView: self.view)
         user.signUpInBackground { (success, error) in

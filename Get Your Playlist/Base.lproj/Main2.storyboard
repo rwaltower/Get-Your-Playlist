@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="thh-6l-vlK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9XZ-N6-Xck">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -46,10 +46,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H2h-kn-odU">
                                 <rect key="frame" x="103" y="108" width="169" height="43"/>
                                 <state key="normal" backgroundImage="Create Playlist Btn"/>
+                                <connections>
+                                    <action selector="createPlaylistButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4PV-hb-f2V"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsX-fB-jrg">
                                 <rect key="frame" x="16" y="33" width="24" height="24"/>
                                 <state key="normal" image="pallete"/>
+                                <connections>
+                                    <action selector="personalizationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OYN-2N-QyI"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlists" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3g-Uq-o1f">
                                 <rect key="frame" x="16" y="159" width="78.5" height="22"/>
@@ -135,6 +141,7 @@
                     <tabBarItem key="tabBarItem" title="Home" image="home" id="Xde-47-bc7"/>
                     <connections>
                         <outlet property="btnCreatePlaylist" destination="H2h-kn-odU" id="C2e-RT-t2Y"/>
+                        <outlet property="btnPersonalization" destination="UsX-fB-jrg" id="1xz-Dd-sUf"/>
                         <outlet property="playlistsTable" destination="s8r-en-uc6" id="qeY-ef-koM"/>
                     </connections>
                 </viewController>
@@ -242,7 +249,7 @@
         <!--Create Playlist View Controller Scene-->
         <scene sceneID="nBS-bT-Fpl">
             <objects>
-                <viewController id="yMG-EO-pqf" userLabel="Create Playlist View Controller Scene" sceneMemberID="viewController">
+                <viewController id="yMG-EO-pqf" userLabel="Create Playlist View Controller Scene" customClass="CreatePlaylistViewController" customModule="Get_Your_Playlist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y8j-4i-ed2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -255,9 +262,15 @@
                                     <navigationItem title="Create Playlist" id="yfp-tK-seq">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="mMo-Fe-mQP">
                                             <color key="tintColor" red="0.019607843140000001" green="0.60784313729999995" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="cancelCreatePlaylist:" destination="yMG-EO-pqf" id="z3L-dJ-wDk"/>
+                                            </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Create" id="q6C-FQ-rlG">
+                                        <barButtonItem key="rightBarButtonItem" title="Create" id="q6C-FQ-rlG">
                                             <color key="tintColor" red="0.019607843140000001" green="0.60784313729999995" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="createPlaylist:" destination="yMG-EO-pqf" id="v5w-pY-gha"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -285,6 +298,36 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" background="bg_blue_border" translatesAutoresizingMaskIntoConstraints="NO" id="P8L-ZA-JS8">
+                                <rect key="frame" x="31" y="240" width="313" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="chooseActivity:" destination="yMG-EO-pqf" eventType="editingDidBegin" id="gqD-SR-cg4"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" background="bg_blue_border" translatesAutoresizingMaskIntoConstraints="NO" id="wZC-Ch-azf">
+                                <rect key="frame" x="38" y="393" width="313" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="chooseMood:" destination="yMG-EO-pqf" eventType="editingDidBegin" id="skq-8a-onk"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" background="bg_blue_border" translatesAutoresizingMaskIntoConstraints="NO" id="1hd-gL-hfO">
+                                <rect key="frame" x="42" y="527" width="313" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="chooseDuration:" destination="yMG-EO-pqf" eventType="editingDidBegin" id="9O6-4m-dDW"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How are you feeling?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJl-Ae-AQ7">
                                 <rect key="frame" x="96.5" y="329" width="182" height="21"/>
@@ -330,6 +373,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dFQ-fM-hfS"/>
                     </view>
+                    <connections>
+                        <outlet property="btnCancel" destination="mMo-Fe-mQP" id="yDB-Og-a8z"/>
+                        <outlet property="btnCreate" destination="q6C-FQ-rlG" id="3Y0-fu-Bpr"/>
+                        <outlet property="txtActivity" destination="P8L-ZA-JS8" id="yfY-PD-XxR"/>
+                        <outlet property="txtDuration" destination="1hd-gL-hfO" id="rz1-3T-qmI"/>
+                        <outlet property="txtMood" destination="wZC-Ch-azf" id="qtI-Bj-Rkz"/>
+                        <outlet property="txtPlaylistName" destination="TVf-Co-bSL" id="00O-uJ-NFo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X7O-0Q-5xS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -355,6 +406,9 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" red="0.019607843140000001" green="0.60784313729999995" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="registerButtonTapped:" destination="9XZ-N6-Xck" eventType="touchUpInside" id="VF2-RA-GIJ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yp2-qh-xiV">
                                 <rect key="frame" x="94" y="565" width="204" height="21"/>
@@ -447,6 +501,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UyE-6h-if2"/>
                     </view>
+                    <connections>
+                        <outlet property="btnForgotPassword" destination="eHc-7r-efh" id="ymO-4l-xFE"/>
+                        <outlet property="btnLogin" destination="TCk-SV-Iu0" id="lKe-iz-8m6"/>
+                        <outlet property="btnRegister" destination="ZRY-7R-H7H" id="gnr-iQ-Dhd"/>
+                        <outlet property="txtPassword" destination="E5K-9o-8yC" id="RmI-bQ-0mE"/>
+                        <outlet property="txtUsername" destination="ulV-M4-yG1" id="LiX-UP-lv2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vak-z0-WSP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -455,7 +516,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="PPt-yG-C8A">
             <objects>
-                <tabBarController id="0YI-f2-dUS" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0YI-f2-dUS" customClass="TabBarController" customModule="Get_Your_Playlist" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="g3a-BN-ffF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -508,7 +569,7 @@
                                     <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="mail"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" background="bg_white" translatesAutoresizingMaskIntoConstraints="NO" id="b0E-N2-X8a">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" background="bg_white" translatesAutoresizingMaskIntoConstraints="NO" id="b0E-N2-X8a">
                                 <rect key="frame" x="37" y="119" width="301" height="40"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
@@ -523,7 +584,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" background="bg_white" translatesAutoresizingMaskIntoConstraints="NO" id="iVe-pT-A6A">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" background="bg_white" translatesAutoresizingMaskIntoConstraints="NO" id="iVe-pT-A6A">
                                 <rect key="frame" x="37" y="167" width="301" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="oUR-lm-60O"/>
@@ -538,6 +599,9 @@
                                     <constraint firstAttribute="height" constant="60" id="bi9-OM-vI2"/>
                                 </constraints>
                                 <state key="normal" image="bg_blue_back"/>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="FGz-HZ-50E" eventType="touchUpInside" id="65G-6D-COA"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REGISTER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdv-EQ-wbu">
                                 <rect key="frame" x="146" y="399" width="83" height="20"/>
@@ -554,6 +618,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lja-MM-ew1">
                                 <rect key="frame" x="152" y="513" width="71" height="70"/>
                                 <state key="normal" image="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="FGz-HZ-50E" eventType="touchUpInside" id="DHK-WU-HpE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -592,11 +659,13 @@
                         <viewLayoutGuide key="safeArea" id="cro-71-YZh"/>
                     </view>
                     <connections>
+                        <outlet property="btnCancel" destination="Lja-MM-ew1" id="yb7-s5-aX4"/>
+                        <outlet property="btnSubmit" destination="j5o-zS-r94" id="v38-FU-MHp"/>
                         <outlet property="txtConfirmPassword" destination="G60-Mg-QHm" id="UDD-Ea-9Lg"/>
-                        <outlet property="txtEmail" destination="bOR-Ab-146" id="zaF-Xw-BHO"/>
-                        <outlet property="txtFirstName" destination="b0E-N2-X8a" id="CwV-Qh-LuT"/>
-                        <outlet property="txtLastName" destination="iVe-pT-A6A" id="sZu-fd-jhI"/>
+                        <outlet property="txtEmail" destination="iVe-pT-A6A" id="rXu-w9-GEe"/>
+                        <outlet property="txtName" destination="b0E-N2-X8a" id="Zo6-RQ-jiA"/>
                         <outlet property="txtPassword" destination="Cnh-Cf-thR" id="Qwx-nw-i3N"/>
+                        <outlet property="txtUsername" destination="bOR-Ab-146" id="jMb-X1-GwS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vf1-cs-Fsg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -781,6 +850,103 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yjn-J4-xyR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2157.5999999999999" y="-884.70764617691157"/>
+        </scene>
+        <!--Playlist View Controller Scene-->
+        <scene sceneID="i0m-O9-lEa">
+            <objects>
+                <viewController id="alW-sI-pHF" userLabel="Playlist View Controller Scene" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZAV-Xp-T5B">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bMP-LD-baY">
+                                <rect key="frame" x="0.0" y="54" width="375" height="613"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlaylistCell" rowHeight="250" id="g0M-b3-nf4" customClass="PlaylistTableViewCell" customModule="Get_Your_Playlist" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="250"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g0M-b3-nf4" id="fkf-dd-ZSp">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="249.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Z2-sz-VPI" userLabel="playlistImage">
+                                                    <rect key="frame" x="16" y="16" width="343" height="225.5"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btn-play" translatesAutoresizingMaskIntoConstraints="NO" id="ezN-I3-IAo">
+                                                    <rect key="frame" x="155" y="96" width="64" height="64"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="64" id="7OI-90-aI2"/>
+                                                        <constraint firstAttribute="width" constant="64" id="uSn-Ef-zR3"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vda-au-wPv" userLabel="playlistLabel">
+                                                    <rect key="frame" x="133" y="168" width="109" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="ezN-I3-IAo" secondAttribute="bottom" constant="89.5" id="7l4-aR-OYs"/>
+                                                <constraint firstAttribute="bottom" secondItem="Vda-au-wPv" secondAttribute="bottom" constant="60.5" id="Ifp-co-QUP"/>
+                                                <constraint firstItem="Vda-au-wPv" firstAttribute="leading" secondItem="fkf-dd-ZSp" secondAttribute="leading" constant="133" id="JZZ-6K-Ve9"/>
+                                                <constraint firstItem="Vda-au-wPv" firstAttribute="leading" secondItem="fkf-dd-ZSp" secondAttribute="leading" constant="133" id="JmB-Dt-rht"/>
+                                                <constraint firstItem="ezN-I3-IAo" firstAttribute="leading" secondItem="fkf-dd-ZSp" secondAttribute="leading" constant="155" id="KWO-YF-bR5"/>
+                                                <constraint firstAttribute="trailing" secondItem="0Z2-sz-VPI" secondAttribute="trailing" constant="16" id="VKS-sc-5PM"/>
+                                                <constraint firstItem="0Z2-sz-VPI" firstAttribute="leading" secondItem="fkf-dd-ZSp" secondAttribute="leading" constant="16" id="Wa6-oq-3CI"/>
+                                                <constraint firstItem="0Z2-sz-VPI" firstAttribute="top" secondItem="fkf-dd-ZSp" secondAttribute="top" constant="16" id="btf-wa-e69"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Vda-au-wPv" secondAttribute="trailing" constant="20" symbolic="YES" id="k7l-gH-9Vc"/>
+                                                <constraint firstAttribute="bottom" secondItem="Vda-au-wPv" secondAttribute="bottom" constant="60.5" id="lky-IZ-PdU"/>
+                                                <constraint firstItem="Vda-au-wPv" firstAttribute="top" secondItem="fkf-dd-ZSp" secondAttribute="top" constant="168" id="vzB-vx-F8I"/>
+                                                <constraint firstAttribute="bottom" secondItem="0Z2-sz-VPI" secondAttribute="bottom" constant="8" id="xgQ-nw-8Yo"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="playlistImage" destination="0Z2-sz-VPI" id="zut-Ym-eQH"/>
+                                            <outlet property="playlistLabel" destination="Vda-au-wPv" id="oKI-fP-vfC"/>
+                                            <outlet property="thumbnailImageView" destination="0Z2-sz-VPI" id="efj-7X-xo9"/>
+                                            <outlet property="usernameLabel" destination="Vda-au-wPv" id="Jh7-7z-Zix"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRH-VT-uYe">
+                                <rect key="frame" x="0.0" y="10" width="375" height="44"/>
+                                <color key="backgroundColor" red="0.84699630739999998" green="0.84709542989999997" blue="0.84695070979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.84699630739999998" green="0.84709542989999997" blue="0.84695070979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <items>
+                                    <navigationItem title="Playlists" id="eL6-qI-6RY"/>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O3K-WM-JCi">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="10"/>
+                                <color key="backgroundColor" red="0.84699630739999998" green="0.84709542989999997" blue="0.84695070979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="IRH-VT-uYe" firstAttribute="leading" secondItem="bMP-LD-baY" secondAttribute="leading" id="0Ez-Zg-ahd"/>
+                            <constraint firstItem="IRH-VT-uYe" firstAttribute="bottom" secondItem="bMP-LD-baY" secondAttribute="top" id="Jo6-Cb-fH2"/>
+                            <constraint firstAttribute="trailing" secondItem="IRH-VT-uYe" secondAttribute="trailing" id="Kfa-8b-C6q"/>
+                            <constraint firstItem="IRH-VT-uYe" firstAttribute="top" secondItem="ZAV-Xp-T5B" secondAttribute="top" constant="10" id="NJw-a4-b4v"/>
+                            <constraint firstItem="IRH-VT-uYe" firstAttribute="top" secondItem="O3K-WM-JCi" secondAttribute="bottom" id="TMQ-lT-leg"/>
+                            <constraint firstItem="IRH-VT-uYe" firstAttribute="trailing" secondItem="O3K-WM-JCi" secondAttribute="trailing" id="ZP6-gK-8wc"/>
+                            <constraint firstAttribute="bottom" secondItem="bMP-LD-baY" secondAttribute="bottom" id="fAN-4X-lcF"/>
+                            <constraint firstItem="IRH-VT-uYe" firstAttribute="top" secondItem="O3K-WM-JCi" secondAttribute="bottom" id="lS6-4c-HC1"/>
+                            <constraint firstItem="O3K-WM-JCi" firstAttribute="bottom" secondItem="IRH-VT-uYe" secondAttribute="top" id="rFH-dq-Eag"/>
+                            <constraint firstItem="O3K-WM-JCi" firstAttribute="leading" secondItem="IRH-VT-uYe" secondAttribute="leading" id="ry8-XY-dDO"/>
+                            <constraint firstItem="IRH-VT-uYe" firstAttribute="leading" secondItem="ZAV-Xp-T5B" secondAttribute="leading" id="xad-F0-79y"/>
+                            <constraint firstItem="O3K-WM-JCi" firstAttribute="top" secondItem="ZAV-Xp-T5B" secondAttribute="top" id="xbl-ag-lkl"/>
+                            <constraint firstItem="IRH-VT-uYe" firstAttribute="trailing" secondItem="bMP-LD-baY" secondAttribute="trailing" id="yuY-az-V4D"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eOe-OU-2YX"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Playlists" image="playlist_album" id="yjQ-eJ-aAJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RYU-uH-cOo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="560.79999999999995" y="1199.5502248875564"/>
         </scene>
     </scenes>
     <resources>

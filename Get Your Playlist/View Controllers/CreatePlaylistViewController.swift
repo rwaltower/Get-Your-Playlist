@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Parse
 
-class CreatePlaylistViewControllers: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class CreatePlaylistViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     let currentUser = PFUser.current()
     
@@ -42,6 +42,7 @@ class CreatePlaylistViewControllers: UIViewController, UIPickerViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target:self.view, action: Selector("endEditing:")))
         PersonaliaztionManager.personalizationManager.getPersonalizationPageTitles(completion: {(titles, moods, activities) in
             
             for mood in moods {

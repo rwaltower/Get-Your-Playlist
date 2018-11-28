@@ -14,14 +14,16 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var btnCreatePlaylist: UIButton!
     @IBOutlet weak var playlistsTable: UITableView!
     
+    @IBOutlet weak var btnPersonalization: UIButton!
+    
     var userPlaylists: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target:self.view, action: Selector("endEditing:")))
         
         let currentUser = PFUser.current()
-        
         let query = PFQuery(className: "user_has_playlists")
         query.whereKey("user_id", equalTo: currentUser!)
         query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
@@ -37,8 +39,8 @@ class HomeViewController: UIViewController {
                 }
             }
             
-            self.playlistsTable.reloadData()
         }
+        
         
         
 
@@ -46,6 +48,16 @@ class HomeViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func createPlaylistButtonPressed(_ sender: UIButton) {
+        let createPlaylistViewController = self.storyboard?.instantiateViewController(withIdentifier: "CreatePlaylistViewController") as! CreatePlaylistViewController
+        self.present(createPlaylistViewController, animated: true)
+    }
+    
+    @IBAction func personalizationButtonPressed(_ sender: UIButton) {
+        let personalizationViewController = self.storyboard?.instantiateViewController(withIdentifier: "PersonalizationViewController") as! PersonalizationViewController
+        self.present(personalizationViewController, animated: true, completion: nil)
     }
 }
 

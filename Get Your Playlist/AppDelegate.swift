@@ -12,12 +12,24 @@ import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     
-    var authorizationManager: AuthorizationManager!
-
-
+    /// The instance of `AuthorizationManager` which is responsible for managing authorization for the application.
+    lazy var authorizationManager: AuthorizationManager = {
+        return AuthorizationManager(appleMusicManager: self.appleMusicManager)
+    }()
+    
+    /// The instance of `MediaLibraryManager` which manages the `MPPMediaPlaylist` this application creates.
+    lazy var mediaLibraryManager: MediaLibraryManager = {
+        return MediaLibraryManager(authorizationManager: self.authorizationManager)
+    }()
+    
+    /// The instance of `AppleMusicManager` which handles making web service calls to Apple Music Web Services.
+    var appleMusicManager = AppleMusicManager()
+    
+    /// The instance of `MusicPlayerManager` which handles media playback.
+    var musicPlayerManager = MusicPlayerManager()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         let configuration = ParseClientConfiguration {
@@ -35,14 +47,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let user = PFUser.current()
         
-        if (user != nil) {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if (user == nil) {
+            let storyboard = UIStoryboard(name: "Main2", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
             self.window?.rootViewController = vc
             self.window?.makeKeyAndVisible()
         } else {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+            let storyboard = UIStoryboard(name: "Main2", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+            vc.selectedIndex = 0
             self.window?.rootViewController = vc
             self.window?.makeKeyAndVisible()
         }

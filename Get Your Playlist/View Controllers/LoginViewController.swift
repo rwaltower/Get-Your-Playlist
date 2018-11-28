@@ -22,6 +22,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target:self.view, action: Selector("endEditing:")))
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,8 +37,9 @@ class LoginViewController: UIViewController {
         PFUser.logInWithUsername(inBackground: username!, password: password!) { (user, error) in
             UIViewController.removeSpinner(spinner: sv)
             if user != nil {
-                let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-                self.present(homeViewController, animated: true)
+                let tabBarController = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+                tabBarController.selectedIndex = 0
+                self.present(tabBarController, animated: true)
             }else{
                 if let descrip = error?.localizedDescription{
                     self.displayErrorMessage(message: (descrip))

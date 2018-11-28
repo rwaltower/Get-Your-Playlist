@@ -38,7 +38,7 @@ class PlaylistViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target:self.view, action: Selector("endEditing:")))
         
         let query = PFQuery(className: "Playlists")
         query.whereKey("playlist_id", equalTo: currentPlaylistId)
