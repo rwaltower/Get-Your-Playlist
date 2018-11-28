@@ -98,12 +98,11 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                 self.displayErrorMessage(message: "You can only choose 3 artists.")
             } else {
                 artistNames.append(cellItem ?? "")
-                self.txtChoices.text = ""
-                for name in artistNames {
+                let combined = self.artistNames + self.genreNames
+                self.txtChoices.text = "";
+                for name in combined {
                     self.txtChoices.text += "\(name), "
-                }
-                for name in genreNames {
-                    self.txtChoices.text += "\(name), "
+                    
                 }
             }
         case 1:
@@ -113,11 +112,13 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
 
             } else {
                 genreNames.append(cellItem ?? "")
-                for name in artistNames {
+                self.txtChoices.text = "";
+
+                let combined = self.artistNames + self.genreNames
+                
+                for name in combined {
                     self.txtChoices.text += "\(name), "
-                }
-                for name in genreNames {
-                    self.txtChoices.text += "\(name), "
+                    
                 }
 
             }
@@ -139,20 +140,24 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         {
         case 0:
             artistNames = artistNames.filter{$0 != cellItem }
-            for name in artistNames {
+            self.txtChoices.text = "";
+
+            let combined = self.artistNames + self.genreNames
+            
+            for name in combined {
                 self.txtChoices.text += "\(name), "
-            }
-            for name in genreNames {
-                self.txtChoices.text += "\(name), "
+
             }
             
         case 1:
             genreNames = genreNames.filter{$0 != cellItem }
-            for name in artistNames {
+            self.txtChoices.text = "";
+
+            let combined = self.artistNames + self.genreNames
+            
+            for name in combined {
                 self.txtChoices.text += "\(name), "
-            }
-            for name in genreNames {
-                self.txtChoices.text += "\(name), "
+                
             }
 
         default:

@@ -22,7 +22,7 @@ class PlaylistsViewController: UIViewController, UITableViewDataSource, UITableV
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("can't find playlists")
         let currentUser = PFUser.current()
         let query = PFQuery(className: "user_has_playlists")
         query.whereKey("user_id", equalTo: currentUser!)
@@ -87,20 +87,22 @@ class PlaylistsViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let uuid = UUID()
-        MPMediaLibrary.default().getPlaylist(with: uuid, creationMetadata: MPMediaPlaylistCreationMetadata(name: userPlaylists[indexPath.row]), completionHandler: { playlist, error in
+        if userPlaylists.count > 0 {
+            let uuid = UUID()
+            MPMediaLibrary.default().getPlaylist(with: uuid, creationMetadata: MPMediaPlaylistCreationMetadata(name: userPlaylists[indexPath.row]), completionHandler: { playlist, error in
             
-            if let anError = error {
-                print("\(anError)")
-            }
+                if let anError = error {
+                    print("\(anError)")
+                }
             
-            if error == nil {
+                if error == nil {
                 
-                self.musicPlayerManager.beginPlayback(itemCollection: playlist!)
+                    self.musicPlayerManager.beginPlayback(itemCollection: playlist!)
 
             }
             
             
-        })
+            })
+        }
     }
 }

@@ -663,9 +663,9 @@
                                 <color key="barTintColor" red="0.85483890771865845" green="0.85493892431259155" blue="0.85479289293289185" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem prompt="Personalization Quiz   " id="wn1-vv-Sp0">
-                                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" id="avA-gf-VVV">
+                                        <barButtonItem key="rightBarButtonItem" title="Next" id="avA-gf-VVV">
                                             <connections>
-                                                <action selector="done:" destination="MTS-Ow-cW7" id="bhG-zx-lz4"/>
+                                                <action selector="done:" destination="MTS-Ow-cW7" id="QOT-AJ-5Sa"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -695,7 +695,7 @@
                     </view>
                     <connections>
                         <outlet property="btnChoose" destination="IfU-u1-BoP" id="blX-z5-ZlG"/>
-                        <outlet property="btnDone" destination="avA-gf-VVV" id="0X4-w3-scF"/>
+                        <outlet property="btnDone" destination="avA-gf-VVV" id="l0c-33-zjm"/>
                         <outlet property="lblTitle" destination="wn1-vv-Sp0" id="UqB-rt-AA8"/>
                         <outlet property="tableView" destination="GPs-ir-zDe" id="nx4-bp-D5B"/>
                     </connections>

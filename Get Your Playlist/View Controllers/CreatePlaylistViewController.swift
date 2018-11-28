@@ -211,8 +211,6 @@ class CreatePlaylistViewController: UIViewController, UIPickerViewDataSource, UI
                 dataAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(dataAlert, animated: true)
                 
-                self.dismiss(animated: true, completion: nil)
-
             } else {
             
                 self.playlistManager.retrieveActivityData(myActivity: activity!, completion: { (activityArray) in
