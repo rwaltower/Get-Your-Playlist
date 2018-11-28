@@ -13,7 +13,7 @@ import Parse
 class PersonalizationViewController: UIPageViewController, UIPageViewControllerDataSource {
     
     var pageTitles: [String] = []
-    //let currentUser: PFUser = PFUser.current()!
+    let currentUser: PFUser = PFUser.current()!
 
     var moods: [PFObject] = []
     var activities: [PFObject] = []
